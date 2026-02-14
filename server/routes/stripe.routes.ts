@@ -16,7 +16,7 @@ const router = Router();
 router.get("/subscription", isAuthenticated, async (req, res) => {
     try {
         const user = req.user as any;
-        const userId = user?.claims?.sub;
+        const userId = user?.id;
         if (!userId) {
             return res.status(401).json({ error: "Not authenticated" });
         }
@@ -59,9 +59,9 @@ router.get("/subscription", isAuthenticated, async (req, res) => {
 router.post("/create-checkout-session", isAuthenticated, async (req, res) => {
     try {
         const authUser = req.user as any;
-        const userId = authUser?.claims?.sub;
-        const email = authUser?.claims?.email;
-        const name = authUser?.claims?.name || `${authUser?.claims?.first_name || ""} ${authUser?.claims?.last_name || ""}`.trim();
+        const userId = authUser?.id;
+        const email = authUser?.email;
+        const name = `${authUser?.firstName || ""} ${authUser?.lastName || ""}`.trim() || authUser?.email;
 
         if (!userId || !email) {
             return res.status(401).json({ error: "Not authenticated" });
@@ -103,7 +103,7 @@ router.post("/create-checkout-session", isAuthenticated, async (req, res) => {
 router.post("/customer-portal", isAuthenticated, async (req, res) => {
     try {
         const authUser = req.user as any;
-        const userId = authUser?.claims?.sub;
+        const userId = authUser?.id;
         if (!userId) {
             return res.status(401).json({ error: "Not authenticated" });
         }
