@@ -1,11 +1,82 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import compression from "compression";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import cors from "cors";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import { storage } from "./storage";
 
 const app = express();
+
+// =====================
+// Security Middleware
+// =====================
+
+// Helmet: HTTP security headers (XSS, clickjacking, MIME sniffing protection)
+app.use(helmet({
+  contentSecurityPolicy: false, // Disabled for SPA (Vite injects inline scripts)
+  crossOriginEmbedderPolicy: false, // Allow cross-origin resources (fonts, images)
+}));
+
+// CORS: Allow only trusted origins
+const allowedOrigins = [
+  'https://wisequery.app',
+  'https://www.wisequery.app',
+  'https://wisequery.onrender.com',
+  'http://localhost:5000',
+  'http://localhost:3000',
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, same-origin, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies for session auth
+}));
+
+// Rate Limiting: General API (100 requests per 15 minutes per IP)
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later.' },
+  skip: (req) => !req.path.startsWith('/api'), // Only limit API routes
+});
+
+// Rate Limiting: Auth endpoints (20 per 15 minutes - stricter)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many auth attempts, please try again later.' },
+});
+
+// Rate Limiting: Chat/AI endpoints (30 per 15 minutes)
+const chatLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many chat requests, please try again later.' },
+});
+
+// Apply rate limiters
+app.use('/api/', generalLimiter);
+app.use('/api/auth/', authLimiter);
+app.use('/api/chat', chatLimiter);
+
+// =====================
+// Core Middleware
+// =====================
 
 // Add compression middleware globally
 app.use(compression());
@@ -29,11 +100,19 @@ declare module 'http' {
     rawBody: unknown
   }
 }
-app.use(express.json({
-  verify: (req, _res, buf) => {
-    req.rawBody = buf;
+
+// Stripe webhook needs raw body, exclude from JSON parsing
+app.use((req, res, next) => {
+  if (req.originalUrl === '/api/stripe/webhook') {
+    next();
+  } else {
+    express.json({
+      verify: (req, _res, buf) => {
+        req.rawBody = buf;
+      }
+    })(req, res, next);
   }
-}));
+});
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
