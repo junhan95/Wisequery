@@ -43,8 +43,8 @@ function getPgVectorPool(): Pool {
   if (!pgVectorPool) {
     pgVectorPool = new Pool({
       connectionString: process.env.DATABASE_URL,
-      max: 10,  // Maximum 10 connections in pool
-      idleTimeoutMillis: 30000,  // Close idle connections after 30 seconds
+      max: 3,  // Optimized for low-resource instances (Render Free: 0.1 CPU)
+      idleTimeoutMillis: 15000,  // Close idle connections after 15 seconds
       connectionTimeoutMillis: 10000  // Timeout after 10 seconds when acquiring connection
     });
 

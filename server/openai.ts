@@ -1,7 +1,16 @@
 import OpenAI from "openai";
 
-// the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
+// Use gpt-4o-mini for fast responses with low cost
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+// Simple LRU cache for embeddings (max 100 entries)
+const embeddingCache = new Map<string, { embedding: number[]; timestamp: number }>();
+const CACHE_MAX_SIZE = 100;
+const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
+
+function getCacheKey(text: string): string {
+  return text.trim().toLowerCase().slice(0, 200);
+}
 
 type MessageContent = string | Array<{
   type: "text" | "image_url";
@@ -13,9 +22,9 @@ export async function* generateChatCompletionStream(
   messages: { role: string; content: MessageContent }[]
 ): AsyncGenerator<string, void, unknown> {
   const stream = await openai.chat.completions.create({
-    model: "gpt-5",
+    model: "gpt-4o-mini",
     messages: messages as OpenAI.Chat.ChatCompletionMessageParam[],
-    max_completion_tokens: 8192,
+    max_completion_tokens: 4096,
     stream: true,
   });
 
@@ -28,12 +37,28 @@ export async function* generateChatCompletionStream(
 }
 
 export async function generateEmbedding(text: string): Promise<number[]> {
+  const cacheKey = getCacheKey(text);
+  const cached = embeddingCache.get(cacheKey);
+
+  if (cached && (Date.now() - cached.timestamp) < CACHE_TTL_MS) {
+    return cached.embedding;
+  }
+
   const response = await openai.embeddings.create({
     model: "text-embedding-3-small",
     input: text,
   });
 
-  return response.data[0].embedding;
+  const embedding = response.data[0].embedding;
+
+  // Evict oldest entries if cache is full
+  if (embeddingCache.size >= CACHE_MAX_SIZE) {
+    const oldestKey = embeddingCache.keys().next().value;
+    if (oldestKey) embeddingCache.delete(oldestKey);
+  }
+  embeddingCache.set(cacheKey, { embedding, timestamp: Date.now() });
+
+  return embedding;
 }
 
 export function cosineSimilarity(a: number[], b: number[]): number {
@@ -114,7 +139,7 @@ Output: {"rewrittenQuery": "database connection configuration settings", "search
   } catch (error) {
     console.error("[Query Rewrite] Failed to rewrite query:", error);
   }
-  
+
   // Fallback: return original query with basic keyword extraction
   return {
     rewrittenQuery: originalQuery,

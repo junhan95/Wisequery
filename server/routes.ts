@@ -198,7 +198,7 @@ FORMAT INSTRUCTIONS:
               const msgEmbedding = JSON.parse(msg.embedding);
               const similarity = cosineSimilarity(userEmbedding, msgEmbedding);
 
-              if (similarity > 0.2) {
+              if (similarity > 0.35) {
                 similarMessages.push({ msg, similarity });
                 conversationIds.add(msg.conversationId);
               }
@@ -246,7 +246,7 @@ FORMAT INSTRUCTIONS:
           }
 
           relevantContexts.sort((a, b) => b.similarity - a.similarity);
-          return relevantContexts.slice(0, 10);
+          return relevantContexts.slice(0, 5);
         } catch (err) {
           console.error("RAG search error:", err);
           return [];
