@@ -1,0 +1,40 @@
+TechCorp Company Profile
+========================
+
+About TechCorp
+--------------
+TechCorp was founded in 2015 in Seoul, South Korea by Dr. Kim Min-jun and Sarah Chen. The company specializes in artificial intelligence solutions for enterprise customers. Our headquarters is located at 123 Innovation Street, Gangnam-gu, Seoul.
+
+Mission Statement
+-----------------
+"Empowering businesses through intelligent automation and data-driven insights."
+
+Key Facts
+---------
+- Founded: March 15, 2015
+- Employees: 847 people globally
+- Annual Revenue: $125 million (2024)
+- Main Products: SmartWidget, DataFlow Pro, AI Assistant Suite
+- CEO: Dr. Kim Min-jun
+- CTO: Sarah Chen
+- Offices: Seoul (HQ), Tokyo, San Francisco, London
+
+Company Values
+--------------
+1. Innovation First - We prioritize creative solutions over conventional approaches
+2. Customer Success - Our customers' achievements are our achievements
+3. Data Privacy - We treat customer data with the utmost care and security
+4. Sustainability - We are committed to carbon-neutral operations by 2025
+5. Diversity - We celebrate diverse perspectives and inclusive teamwork
+
+Awards and Recognition
+----------------------
+- Best AI Startup Award 2020 (Korean Tech Association)
+- Innovation Leader 2022 (Asia Pacific Business Awards)
+- Top 100 AI Companies 2023 (Forbes Korea)
+
+Contact Information
+-------------------
+Email: contact@techcorp.example.com
+Phone: +82-2-1234-5678
+Website: www.techcorp.example.com

@@ -1,0 +1,1552 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "rename": "Rename",
+    "name": "Name",
+    "description": "Description",
+    "search": "Search",
+    "all": "All",
+    "close": "Close",
+    "confirm": "Confirm",
+    "unlimited": "Unlimited",
+    "back_home": "Back to Home",
+    "backToHome": "Back to Home",
+    "home": "Home",
+    "contactUs": "Contact Us",
+    "language": {
+      "switchTo": "Switch to {{language}}",
+      "english": "English",
+      "korean": "Korean"
+    },
+    "fileSize": {
+      "bytes": "Bytes",
+      "kb": "KB",
+      "mb": "MB"
+    }
+  },
+  "auth": {
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Start organizing your AI conversations today",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "firstName": "First name (optional)",
+      "lastName": "Last name (optional)",
+      "createAccount": "Create account",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "orContinueWith": "Or continue with",
+      "google": "Google",
+      "kakao": "Kakao",
+      "naver": "Naver",
+      "errors": {
+        "emailRequired": "Email is required",
+        "invalidEmail": "Invalid email format",
+        "passwordRequired": "Password is required",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordMismatch": "Passwords do not match",
+        "emailExists": "This email is already registered"
+      }
+    },
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your account",
+      "signIn": "Sign in",
+      "signInDescription": "Sign in with Google, Apple, GitHub, X, or email",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "orContinueWith": "Or",
+      "forgotPassword": "Forgot your password?"
+    },
+    "verifyEmail": {
+      "title": "Verify your email",
+      "subtitle": "We sent a verification code to {{email}}",
+      "code": "Verification code",
+      "verify": "Verify email",
+      "resendCode": "Resend code",
+      "codeSent": "Code sent!",
+      "errors": {
+        "codeRequired": "Verification code is required",
+        "invalidCode": "Invalid or expired code"
+      }
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "subtitle": "Enter your email to receive a reset code",
+      "email": "Email address",
+      "sendCode": "Send reset code",
+      "backToLogin": "Back to login",
+      "codeSent": "Check your email for the reset code",
+      "errors": {
+        "invalidEmail": "Please enter a valid email address",
+        "emailNotFound": "This email is not registered"
+      }
+    },
+    "resetPassword": {
+      "title": "Create new password",
+      "subtitle": "Enter the code sent to {{email}}",
+      "code": "Reset code",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "resetPassword": "Reset password",
+      "errors": {
+        "invalidCode": "Invalid or expired reset code",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordMismatch": "Passwords do not match"
+      }
+    }
+  },
+  "landing": {
+    "nav": {
+      "appName": "WiseQuery",
+      "features": "Features",
+      "howItWorks": "How It Works",
+      "useCases": "Use Cases",
+      "pricing": "Pricing",
+      "signIn": "Sign In",
+      "getStarted": "Get Started"
+    },
+    "whatsNew": {
+      "badge": "New",
+      "title": "Latest Features",
+      "subtitle": "Powerful new capabilities to supercharge your knowledge work",
+      "googleDocs": {
+        "title": "Google Docs Integration",
+        "description": "Edit Word, Excel, and PowerPoint files directly in Google Docs, Sheets, and Slides. Changes sync back automatically.",
+        "badge": "Just Launched"
+      },
+      "officeSupport": {
+        "title": "Full Office Suite Support",
+        "description": "Upload, preview, and manage DOCX, XLSX, PPTX files with intelligent parsing and AI-powered search."
+      },
+      "multilingual": {
+        "title": "Complete Bilingual UI",
+        "description": "Full Korean and English interface with automatic language detection. Work in your preferred language."
+      },
+      "folderSystem": {
+        "title": "Advanced Folder Organization",
+        "description": "Hierarchical folders with drag-and-drop, cut/copy/paste, and context menus. Organize like Windows Explorer."
+      }
+    },
+    "successStories": {
+      "title": "Real Results from Real Teams",
+      "subtitle": "See how organizations leverage RAG-powered knowledge management",
+      "consulting": {
+        "industry": "Consulting",
+        "title": "Strategic Consulting Firm",
+        "metric": "50%",
+        "metricLabel": "Faster Report Writing",
+        "description": "\"We reduced proposal creation time by half. The AI finds relevant case studies from hundreds of past projects instantly.\"",
+        "beforeAfter": "Before: 4 hours per proposal | After: 2 hours"
+      },
+      "research": {
+        "industry": "Research",
+        "title": "Academic Research Lab",
+        "metric": "70%",
+        "metricLabel": "Less Time Searching",
+        "description": "\"Instead of digging through papers manually, I ask questions and get synthesized answers with citations in seconds.\"",
+        "beforeAfter": "Before: 30 min per search | After: Under 1 min"
+      },
+      "product": {
+        "industry": "Product",
+        "title": "Tech Startup Product Team",
+        "metric": "40%",
+        "metricLabel": "Faster Decisions",
+        "description": "\"All our specs, user research, and meeting notes are searchable. New team members ramp up in days, not weeks.\"",
+        "beforeAfter": "Before: 2-week onboarding | After: 3-day onboarding"
+      }
+    },
+    "ragEngine": {
+      "title": "Semantic Intelligence Engine",
+      "subtitle": "Enterprise-grade RAG technology that understands meaning, not just keywords",
+      "howItWorks": "How It Works",
+      "step1": {
+        "title": "Smart Indexing",
+        "description": "Documents are automatically chunked and converted to vector embeddings for semantic understanding."
+      },
+      "step2": {
+        "title": "Context Retrieval",
+        "description": "When you ask a question, AI finds the most relevant context from all your projects and conversations."
+      },
+      "step3": {
+        "title": "Intelligent Response",
+        "description": "GPT synthesizes an answer using retrieved context, citing sources so you can verify every claim."
+      },
+      "features": {
+        "crossProject": "Cross-Project Search",
+        "crossProjectDesc": "Find relevant context from any project",
+        "attributeFilter": "Attribute Filtering",
+        "attributeFilterDesc": "Filter by metadata like date, author, type",
+        "hybridSearch": "Hybrid Search",
+        "hybridSearchDesc": "Combines semantic + keyword matching",
+        "realtimeSync": "Real-time Sync",
+        "realtimeSyncDesc": "New content indexed automatically"
+      }
+    },
+    "socialProof": {
+      "users": "5,000+",
+      "usersLabel": "Active Users",
+      "documents": "100K+",
+      "documentsLabel": "Documents Processed",
+      "queries": "1M+",
+      "queriesLabel": "AI Queries Answered",
+      "rating": "4.9/5"
+    },
+    "documents": {
+      "title": "Your Documents, Instantly Searchable",
+      "subtitle": "Upload your files and ask questions in natural language. AI automatically analyzes, chunks, and indexes your content for intelligent retrieval.",
+      "upload": {
+        "title": "Drag & Drop Upload",
+        "description": "Simply drag files from your computer or click to upload. Support for PDF, Word, Excel, and text files."
+      },
+      "chunk": {
+        "title": "Auto Chunking",
+        "description": "Documents are automatically split into optimal chunks for AI comprehension. No manual preprocessing required."
+      },
+      "search": {
+        "title": "Semantic Search",
+        "description": "Ask questions in natural language and get precise answers with source citations from your documents."
+      }
+    },
+    "howItWorks": {
+      "title": "Get Started in 3 Simple Steps",
+      "subtitle": "From upload to insight in minutes. No technical setup required.",
+      "step1": {
+        "title": "Create a Project",
+        "description": "Organize your work by topic, client, or purpose. Keep everything structured and easy to find."
+      },
+      "step2": {
+        "title": "Upload Documents",
+        "description": "Drag and drop your files. AI automatically processes and indexes them for intelligent search."
+      },
+      "step3": {
+        "title": "Ask Anything",
+        "description": "Chat naturally and get answers from your documents. AI cites sources so you can verify every response."
+      },
+      "cta": "Try It Free Now"
+    },
+    "hero": {
+      "title": "The AI Assistant That Remembers Everything",
+      "subtitle": "Structure knowledge by project. Build context over time. Get intelligent answers from your entire conversation history with powerful semantic search.",
+      "startTrial": "Start Your First Project",
+      "watchDemo": "See How It Works",
+      "noCreditCard": "No credit card required",
+      "freeForever": "Free forever plan",
+      "demoProject": "Project: Research / Conversation: AI Trends",
+      "demoQuestion": "What are the latest trends in RAG systems?",
+      "demoAnswer": "Based on your previous conversations about vector databases and semantic search...",
+      "demoContext": "Context from 3 projects"
+    },
+    "features": {
+      "title": "Built for Knowledge Work, Not Just Chatting",
+      "subtitle": "Transform scattered conversations into structured knowledge that grows more valuable over time",
+      "explorer": {
+        "title": "Project-Based Organization",
+        "description": "Structure conversations like files in folders. Keep client work separate from personal research. Navigate your knowledge base with Windows Explorer familiarity."
+      },
+      "rag": {
+        "title": "Context-Aware AI",
+        "description": "Every answer draws from your entire conversation history. AI automatically finds relevant discussions from weeks or months ago across all projects."
+      },
+      "search": {
+        "title": "Intelligent Memory Recall",
+        "description": "Search by meaning, not just keywords. Find that discussion about 'authentication' even when you talked about 'login flows' and 'user sessions'."
+      },
+      "streaming": {
+        "title": "Real-time Responses",
+        "description": "See AI thinking in real-time with WebSocket streaming. Start reading answers as they're generated, no waiting for completion."
+      },
+      "security": {
+        "title": "Secure & Private",
+        "description": "Your conversations stay yours. Complete data isolation with secure authentication. PostgreSQL reliability, cloud convenience."
+      },
+      "multimodal": {
+        "title": "More Than Text",
+        "description": "Upload images, diagrams, and screenshots. Get AI insights on visual content alongside your text discussions."
+      },
+      "multilingual": {
+        "title": "Multilingual Support",
+        "description": "Full interface support for English and Korean. Chat in your preferred language with localized UI and responses."
+      },
+      "dragdrop": {
+        "title": "Intuitive File Management",
+        "description": "Drag and drop files and folders like Windows Explorer. Hierarchical organization with unlimited subfolders."
+      }
+    },
+    "useCases": {
+      "title": "Real Work, Real Results",
+      "subtitle": "See how professionals use AI Chat Explorer to build knowledge, not just have conversations",
+      "knowledge": {
+        "title": "Research & Learning",
+        "description": "Build a living knowledge base from your studies. Ask questions months later and get answers synthesized from all your notes and discussions.",
+        "benefit1": "Organize research by topic or project",
+        "benefit2": "AI connects insights across papers and notes",
+        "benefit3": "Instant recall of concepts you studied weeks ago",
+        "projectsLabel": "Projects",
+        "researchPapers": "Research Papers",
+        "mlSurvey": "Machine Learning Survey",
+        "ragReview": "RAG Systems Review",
+        "clientProjects": "Client Projects",
+        "courseNotes": "Course Notes"
+      },
+      "development": {
+        "title": "Business & Consulting",
+        "description": "Never repeat the same client conversation twice. Keep client contexts separate while building reusable expertise across projects.",
+        "benefit1": "Separate client work, preserve confidentiality",
+        "benefit2": "Reuse solutions without mixing contexts",
+        "benefit3": "Build expertise that compounds over time",
+        "demoQuery": "What pricing model did we recommend for SaaS clients?",
+        "demoLabel": "Consultant Query",
+        "demoContext": "Searching across Client A, Client B, and Best Practices projects...",
+        "demoAnswer": "Based on 5 SaaS client projects, you typically recommended tiered pricing with usage-based overages..."
+      },
+      "team": {
+        "title": "Creative & Content Work",
+        "description": "Brainstorm ideas, develop concepts, and maintain creative consistency across projects. Your AI partner that remembers your style and preferences.",
+        "benefit1": "Track creative evolution over time",
+        "benefit2": "Maintain brand voice consistency",
+        "benefit3": "Never start from scratch again",
+        "teamLabel": "Project: Brand Strategy",
+        "members": "drafts",
+        "projects": "iterations",
+        "conversations": "concepts"
+      }
+    },
+    "testimonials": {
+      "title": "Loved by Professionals Worldwide",
+      "rating": "4.9/5 from 2,000+ reviews",
+      "alex": {
+        "name": "Alex Johnson",
+        "role": "Senior Developer",
+        "quote": "Game changer for managing my side projects. The RAG system actually works—it pulls context from conversations I had months ago."
+      },
+      "maria": {
+        "name": "Maria Chen",
+        "role": "Product Manager",
+        "quote": "Finally, an AI assistant that remembers our product decisions. The folder structure makes it easy to organize by feature."
+      },
+      "david": {
+        "name": "David Park",
+        "role": "Research Scientist",
+        "quote": "Perfect for literature review. I can ask questions and get answers synthesized from all my research notes across different papers."
+      }
+    },
+    "pricing": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Choose the plan that fits your needs",
+      "free": {
+        "title": "Free",
+        "price": "$0",
+        "period": "/month",
+        "feature1": "3 projects",
+        "feature2": "30 conversations",
+        "feature3": "10GB storage",
+        "feature4": "Basic RAG search",
+        "retention": "30-day data retention",
+        "cta": "Get Started"
+      },
+      "basic": {
+        "title": "Basic",
+        "badge": "Most Popular",
+        "price": "$25",
+        "period": "/month",
+        "yearlyPrice": "$20",
+        "feature1": "10 projects",
+        "feature2": "Unlimited conversations",
+        "feature3": "50GB storage",
+        "feature4": "Basic RAG search",
+        "retention": "180-day data retention",
+        "cta": "Upgrade to Basic"
+      },
+      "pro": {
+        "title": "Pro",
+        "price": "$40",
+        "period": "/month",
+        "feature1": "Unlimited projects",
+        "feature2": "Unlimited conversations",
+        "feature3": "100GB storage",
+        "feature4": "Advanced RAG with latest AI models",
+        "feature5": "Document image analysis",
+        "feature6": "Priority support",
+        "retention": "1-year data retention",
+        "cta": "Upgrade to Pro"
+      },
+      "custom": {
+        "title": "Custom",
+        "price": "Contact Us",
+        "feature1": "Everything in Pro",
+        "feature2": "Custom limits",
+        "feature3": "Custom integrations",
+        "feature4": "Dedicated support",
+        "feature5": "SLA guarantee",
+        "retention": "Unlimited retention",
+        "cta": "Contact Sales"
+      }
+    },
+    "dataSecurity": {
+      "title": "Your Data, Your Control",
+      "subtitle": "Enterprise-grade security with full transparency on how your data is handled.",
+      "encryption": {
+        "title": "End-to-End Encryption",
+        "description": "All data encrypted at rest and in transit. Your conversations and documents are protected with industry-standard encryption."
+      },
+      "retention": {
+        "title": "Clear Retention Policies",
+        "description": "Know exactly how long your data is kept. 7-day warning before archival with easy restore options during grace period."
+      },
+      "isolation": {
+        "title": "Complete Data Isolation",
+        "description": "Each user's data is completely separated. No cross-contamination, no shared access, no compromises on privacy."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about WiseQuery",
+      "q1": {
+        "question": "What are the limitations of the free plan?",
+        "answer": "The free plan includes 3 projects, 30 conversations, and 10GB storage with 30-day data retention. You get full access to basic RAG search and all core features. Perfect for personal use and trying out the platform."
+      },
+      "q2": {
+        "question": "What file formats are supported?",
+        "answer": "WiseQuery supports PDF, Word documents (.docx), Excel spreadsheets (.xlsx), CSV files, and plain text (.txt). All files are automatically parsed, chunked, and indexed for AI-powered search."
+      },
+      "q3": {
+        "question": "How long is my data retained?",
+        "answer": "Data retention depends on your plan: Free (30 days), Basic (180 days), Pro (1 year), Custom (unlimited). You'll receive email notifications 7 days before data archival, and archived data can be restored within a grace period."
+      },
+      "q4": {
+        "question": "Can I share projects with others?",
+        "answer": "Currently, WiseQuery is designed for individual use with complete data isolation for security. Team collaboration features are on our roadmap for future releases."
+      },
+      "q5": {
+        "question": "Can I export my data?",
+        "answer": "Yes! You can export your conversations as JSON or text files at any time. Your data belongs to you, and we make it easy to take it with you."
+      }
+    },
+    "finalCta": {
+      "title": "Ready to Build Knowledge That Lasts?",
+      "subtitle": "Join thousands of professionals who trust WiseQuery to organize, search, and leverage their knowledge.",
+      "button": "Start Free Today",
+      "setupTime": "Setup in 2 minutes",
+      "cancelAnytime": "Cancel anytime"
+    },
+    "footer": {
+      "tagline": "The AI assistant that remembers everything. Build knowledge that compounds over time.",
+      "product": "Product",
+      "features": "Features",
+      "pricing": "Pricing",
+      "changelog": "Changelog",
+      "documentation": "Documentation",
+      "company": "Company",
+      "about": "About",
+      "blog": "Blog",
+      "careers": "Careers",
+      "contact": "Contact",
+      "legal": "Legal",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "security": "Security",
+      "copyright": "© 2025 WiseQuery. All rights reserved."
+    }
+  },
+  "chat": {
+    "sidebar": {
+      "projects": "Projects",
+      "newProject": "New Project",
+      "newFolder": "New Folder",
+      "newConversation": "New Conversation",
+      "login": "Login",
+      "logout": "Logout",
+      "settings": "Settings",
+      "renameProject": "Rename Project",
+      "renameConversation": "Rename Conversation",
+      "renameFolder": "Rename Folder",
+      "deleteProject": "Delete Project",
+      "deleteConversation": "Delete Conversation",
+      "deleteFolder": "Delete Folder",
+      "moveToFolder": "Move to {{folderName}}",
+      "moveToProject": "Move to {{projectName}}",
+      "trash": "Trash"
+    },
+    "trash": {
+      "title": "Trash",
+      "empty": "Trash is empty",
+      "emptyDescription": "Deleted items will appear here",
+      "emptyTrash": "Empty Trash",
+      "emptyTrashConfirm": "Are you sure you want to permanently delete all items in trash? This cannot be undone.",
+      "restore": "Restore",
+      "deleteForever": "Delete Forever",
+      "deleteConfirm": "Are you sure you want to permanently delete this item? This cannot be undone.",
+      "restoreSuccess": "Item restored successfully",
+      "deleteSuccess": "Item permanently deleted",
+      "emptySuccess": "Trash emptied successfully",
+      "files": "Files",
+      "folders": "Folders",
+      "conversations": "Conversations",
+      "deletedOn": "Deleted on {{date}}"
+    },
+    "toolbar": {
+      "previous": "Previous",
+      "next": "Next",
+      "up": "Up",
+      "selectProject": "Select a project",
+      "search": "Search",
+      "exportJson": "Export as JSON",
+      "exportText": "Export as Text"
+    },
+    "messages": {
+      "user": "User",
+      "ai": "AI",
+      "typing": "Typing...",
+      "preparing": "Preparing response...",
+      "startConversation": "Start a conversation",
+      "startHint": "Chat with AI and ask questions. All conversations are searchable within the project."
+    },
+    "input": {
+      "placeholder": "Enter a message...",
+      "send": "Send",
+      "stop": "Stop generation",
+      "generationStopped": "Response stopped",
+      "hint": "Press Enter to send, Shift+Enter for new line",
+      "attachFile": "Attach File",
+      "removeFile": "Remove File",
+      "uploading": "Uploading...",
+      "uploadSuccess": "File attached",
+      "uploadError": "Failed to upload file"
+    },
+    "conversion": {
+      "started": "Converting file to PDF",
+      "completed": "PDF conversion complete",
+      "error": "PDF conversion failed",
+      "download": "Download PDF",
+      "converting": "Converting..."
+    }
+  },
+  "home": {
+    "greeting": "Hello. {{name}}",
+    "guestGreeting": "Hello.",
+    "instructions": "Manage projects and conversations in the left sidebar. The AI learns from all conversations to provide better answers.",
+    "projectCreated": "Project created",
+    "projectRenamed": "Project renamed",
+    "projectDeleted": "Project deleted",
+    "folderCreated": "Folder created",
+    "folderRenamed": "Folder renamed",
+    "folderDeleted": "Folder deleted",
+    "folderMoved": "Folder moved",
+    "deleteFolderConfirm": "Are you sure you want to delete this folder? Conversations in this folder will be moved to the project root.",
+    "renameFolderTitle": "Rename Folder",
+    "conversationCreated": "Conversation created",
+    "conversationRenamed": "Conversation renamed",
+    "conversationDeleted": "Conversation deleted",
+    "conversationMoved": "Conversation moved",
+    "conversationUpdated": "Conversation settings updated",
+    "conversationUpdateFailed": "Failed to update conversation settings",
+    "unknownError": "Unknown error",
+    "connectionFailed": "Connection failed",
+    "connectionFailedDesc": "Cannot connect to server. Please refresh the page.",
+    "errorOccurred": "Error occurred",
+    "connectionError": "Connection error",
+    "notConnected": "Not connected to server",
+    "messageSendFailed": "Failed to send message",
+    "searchFailed": "Search failed",
+    "noMessagesToExport": "No messages to export",
+    "exportComplete": "{{format}} file export complete",
+    "uploadWarning": "Warning: Some files failed to upload ({{files}})",
+    "deleteProjectConfirm": "Are you sure you want to delete this project and all its conversations?",
+    "deleteConversationConfirm": "Are you sure you want to delete this conversation?",
+    "renameProjectTitle": "Rename Project",
+    "renameConversationTitle": "Rename Conversation"
+  },
+  "textEditor": {
+    "title": "Text Editor",
+    "placeholder": "Enter text here...",
+    "saved": "File saved successfully",
+    "saveFailed": "Failed to save file",
+    "modified": "modified",
+    "unsavedChanges": "You have unsaved changes. Are you sure you want to close?"
+  },
+  "fileViewer": {
+    "title": "Files",
+    "noProjectSelected": "Select a project to view files",
+    "noFiles": "No files in this folder",
+    "dropFilesHere": "Drop files here or click to upload",
+    "dragDropHint": "Drag & drop files from Windows Explorer",
+    "uploading": "Uploading...",
+    "uploadSuccess": "File uploaded successfully",
+    "uploadFailed": "Failed to upload file",
+    "someUploadsFailed": "{{count}} file(s) failed to upload",
+    "allUploadsSuccess": "{{count}} files uploaded successfully",
+    "folderUploadNotAllowed": "Folder upload is not supported for indexing purposes.",
+    "concurrentUploadLimit": "You can upload up to {{count}} files at a time.",
+    "excessFileWarning": "You can only upload up to {{count}} files.",
+    "refresh": "Refresh",
+    "viewMode": {
+      "largeIcons": "Large Icons",
+      "list": "List",
+      "details": "Details"
+    },
+    "sort": {
+      "title": "Sort",
+      "name": "Name",
+      "date": "Date Modified",
+      "type": "Type",
+      "ascending": "Ascending",
+      "descending": "Descending"
+    },
+    "contextMenu": {
+      "open": "Open",
+      "preview": "Preview",
+      "cut": "Cut",
+      "copy": "Copy",
+      "paste": "Paste",
+      "noPasteItems": "No items to paste",
+      "rename": "Rename",
+      "delete": "Delete",
+      "attachToChat": "Attach to Chat",
+      "settings": "Settings",
+      "properties": "Properties"
+    },
+    "columns": {
+      "name": "Name",
+      "size": "Size",
+      "type": "Type",
+      "dateModified": "Date Modified"
+    },
+    "fileRenamed": "File renamed",
+    "fileDeleted": "File deleted",
+    "fileCopied": "File copied",
+    "fileCut": "File ready to move",
+    "filePasted": "File pasted",
+    "fileMoved": "File moved",
+    "multipleFilesMoved": "{{count}} files moved",
+    "movingFile": "Moving file",
+    "movingFiles": "Moving {{count}} files",
+    "multipleFilesPasted": "{{count}} files pasted",
+    "cannotPasteDifferentProject": "Cannot paste files from a different project",
+    "copyNotSupported": "Copy-paste is not supported yet",
+    "fileAttached": "File attached to chat",
+    "fileTagged": "File tagged (Ctrl+Click)",
+    "conversationTagged": "Conversation tagged",
+    "ctrlClickHint": "Ctrl+Click to tag file for AI analysis",
+    "shiftDragHint": "Shift+Drag to select multiple items",
+    "deleteFileConfirm": "Are you sure you want to delete this file?",
+    "deleteConversationConfirm": "Are you sure you want to delete this conversation?",
+    "conversationRenamed": "Conversation renamed",
+    "conversationDeleted": "Conversation deleted",
+    "conversationMoved": "Conversation moved",
+    "conversationCut": "Conversation ready to move",
+    "conversationCopied": "Conversation copied",
+    "multipleConversationsCopied": "{{count}} conversations copied",
+    "multipleConversationsMoved": "{{count}} conversations moved",
+    "settingsComingSoon": "Settings feature coming soon",
+    "multipleFilesCut": "{{count}} items ready to move",
+    "multipleFilesCopied": "{{count}} items copied",
+    "folderCut": "Folder ready to move",
+    "folderCopied": "Folder copied",
+    "folderMoved": "Folder moved",
+    "multipleFoldersMoved": "{{count}} folders moved",
+    "multipleFoldersCopied": "{{count}} folders copied",
+    "movingFolder": "Moving folder",
+    "movingFolders": "Moving {{count}} folders",
+    "movingConversation": "Moving conversation",
+    "movingConversations": "Moving {{count}} conversations",
+    "multipleConversationsMoved": "{{count}} conversations moved",
+    "cannotMoveIntoSelf": "Cannot move folder into itself",
+    "cannotMoveToDescendant": "Cannot move folder into its descendant",
+    "deleteMultipleConfirm": "Are you sure you want to delete {{count}} selected items?",
+    "multiDeleteSuccess": "{{count}} items deleted successfully",
+    "multiDeletePartial": "{{success}} items deleted, {{fail}} items failed to delete",
+    "multiDeleteFailed": "Failed to delete items",
+    "goUp": "Up",
+    "folder": "Folder",
+    "conversation": "Conversation"
+  },
+  "properties": {
+    "title": "Properties",
+    "type": "Type",
+    "location": "Location",
+    "size": "Size",
+    "contents": "Contents",
+    "contentsDetail": "Files: {{fileCount}}, Folders: {{folderCount}}",
+    "created": "Created",
+    "fileFolder": "File Folder",
+    "file": "File",
+    "imageFile": "Image",
+    "videoFile": "Video",
+    "audioFile": "Audio",
+    "textFile": "Text File"
+  },
+  "filePreview": {
+    "previewOf": "Preview of {{name}}",
+    "videoNotSupported": "Your browser does not support the video element.",
+    "audioNotSupported": "Your browser does not support the audio element.",
+    "pdfHint": "PDF files open in a new tab for best viewing experience.",
+    "openInNewTab": "Open in New Tab",
+    "cannotPreview": "This file type cannot be previewed.",
+    "download": "Download"
+  },
+  "dialogs": {
+    "createProject": {
+      "title": "New Project",
+      "namePlaceholder": "Project name",
+      "create": "Create",
+      "cancel": "Cancel"
+    },
+    "createFolder": {
+      "title": "New Folder",
+      "namePlaceholder": "Folder name",
+      "create": "Create",
+      "cancel": "Cancel"
+    },
+    "createConversation": {
+      "title": "New Conversation",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter AI agent name",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Enter a brief description",
+      "instructionsLabel": "Instructions",
+      "instructionsPlaceholder": "Give the AI agent a role and reflect user requirements.",
+      "instructionsExample": "Example: Answer questions in a professional tone and include detailed explanations when writing code.",
+      "knowledgeLabel": "Knowledge",
+      "addFile": "Choose File",
+      "dragOrDrop": "Or drag files to add",
+      "preview": "Preview",
+      "noName": "No Name",
+      "attachedFiles": "Attached Files ({{count}})",
+      "previewEmpty": "Settings will be displayed here",
+      "create": "Create",
+      "cancel": "Cancel"
+    },
+    "editConversation": {
+      "title": "Conversation Settings",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter AI agent name",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Enter a brief description",
+      "instructionsLabel": "Instructions",
+      "instructionsPlaceholder": "Give the AI agent a role and reflect user requirements.",
+      "instructionsExample": "Example: Answer questions in a professional tone and include detailed explanations when writing code.",
+      "knowledgeLabel": "Knowledge",
+      "existingFiles": "Existing Files",
+      "addNewFile": "Add New File",
+      "dragOrDrop": "Or drag files to add",
+      "newFiles": "Files to Add",
+      "preview": "Preview",
+      "noName": "No Name",
+      "attachedFiles": "Attached Files ({{count}})",
+      "newFileIndicator": "(New)",
+      "previewEmpty": "Settings will be displayed here",
+      "saving": "Saving...",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "rename": {
+      "nameLabel": "Name",
+      "rename": "Rename",
+      "cancel": "Cancel"
+    },
+    "search": {
+      "title": "Search Conversations",
+      "placeholder": "Search conversation content...",
+      "searchButton": "Search",
+      "searching": "Searching...",
+      "noResults": "No results found",
+      "exactMatches": "Exact Matches",
+      "relatedConversations": "Related Conversations"
+    },
+    "upgradeLimitDialog": {
+      "title": "Upgrade Required",
+      "projectsLimitReached": "You've reached the limit of {{max}} projects on your current plan. You currently have {{current}} projects.",
+      "conversationsLimitReached": "You've reached the limit of {{max}} conversations on your current plan. You currently have {{current}} conversations.",
+      "aiQueriesLimitReached": "You've reached the limit of {{max}} AI queries on your current plan. You have used {{current}} AI queries.",
+      "storageLimitReached": "You've reached the storage limit of {{max}} on your current plan. You are currently using {{current}}.",
+      "upgradeMessage": "Upgrade your plan to unlock more features:",
+      "upgradeToBasic": "Upgrade to Basic for 10 projects, unlimited conversations, and 50GB storage.",
+      "upgradeToPro": "Upgrade to Pro for unlimited projects, unlimited conversations, 100GB storage, and image generation.",
+      "upgradeToCustom": "Contact us for custom limits tailored to your needs.",
+      "benefits": {
+        "moreProjects": "More projects",
+        "unlimitedProjects": "Unlimited projects",
+        "unlimitedConversations": "Unlimited conversations",
+        "moreStorage": "More storage space",
+        "imageGeneration": "Nano Banana Pro image generation",
+        "prioritySupport": "Priority support"
+      },
+      "upgrade": "View Plans",
+      "cancel": "Maybe Later"
+    }
+  },
+  "notFound": {
+    "title": "404 Page Not Found",
+    "message": "Did you forget to add the page to the router?"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "Stay updated with the latest features, improvements, and fixes",
+    "types": {
+      "feature": "Feature",
+      "improvement": "Improvement",
+      "bugfix": "Bug Fix",
+      "security": "Security"
+    },
+    "entries": {
+      "chatGptMarkdown": {
+        "title": "ChatGPT-Style Markdown Rendering",
+        "description": "Enhanced AI response formatting with ChatGPT-style markdown rendering. Features include styled headings with icons, colored list markers (bullets and numbers), inline code highlighting, blockquotes, tables, and emoji-to-icon conversion. Supports both light and dark themes."
+      },
+      "aiLatencyOptimization": {
+        "title": "AI Response Latency Optimization",
+        "description": "Reduced AI response latency by 70-80% through background embedding generation, parallel RAG search with OpenAI streaming, and N+1 query elimination. Time-to-first-token reduced to 0.5-1 second for faster conversations."
+      },
+      "passwordReset": {
+        "title": "Password Reset Functionality",
+        "description": "Added complete password reset flow for email/password users. Users can request a reset code via email, enter the code, and set a new password. Includes email validation and translated error messages."
+      },
+      "autoRagPipeline": {
+        "title": "Automatic RAG Pipeline",
+        "description": "Implemented automatic document processing pipeline. Files are now automatically parsed, chunked, and embedded upon upload. Supports PDF, Word, Excel, and text files with intelligent chunking and OpenAI Vector Store compatible attribute filtering."
+      },
+      "propertiesDialog": {
+        "title": "File & Folder Properties Dialog",
+        "description": "Added properties context menu for all files and folders. View detailed information including type, location, size, content count, and creation date in a Windows Explorer-style properties dialog."
+      },
+      "dataRetention": {
+        "title": "Tier-Based Data Retention System",
+        "description": "Implemented comprehensive data expiration and retention policies. Features graduated retention periods by subscription tier (Free: 30/60 days, Basic: 180 days, Pro: 365 days, Enterprise: unlimited), warning notifications before archival, and restore functionality."
+      },
+      "multiFileSelect": {
+        "title": "Multi-File Selection & Operations",
+        "description": "Added drag-to-select functionality in file viewer for selecting multiple files and folders. Selected items support cut, copy, paste operations across projects with full context menu integration."
+      },
+      "folderContextMenu": {
+        "title": "Enhanced Folder Context Menu",
+        "description": "Extended context menu support for folders including rename, properties, cut, copy, and delete operations. Folders are now included in drag selection and support all file operations."
+      },
+      "languageToggleFix": {
+        "title": "Language Toggle Button Fix",
+        "description": "Fixed an issue where the language selection button in the navigation bar had incorrect text width, causing display problems. Button now properly shows icon and text."
+      },
+      "customAuth": {
+        "title": "Custom Authentication System",
+        "description": "Introduced comprehensive custom authentication with email/password signup, OAuth integration (Google, Kakao, Naver), email verification via SendGrid, and password reset functionality."
+      },
+      "ragEnhancement": {
+        "title": "Enhanced RAG System",
+        "description": "Improved cross-project context retrieval with relaxed similarity thresholds and expanded context windows for more relevant AI responses."
+      },
+      "streamingFix": {
+        "title": "WebSocket Streaming Stability",
+        "description": "Fixed intermittent connection drops during AI response streaming. Implemented exponential backoff reconnection strategy."
+      },
+      "imageUpload": {
+        "title": "Image Upload Support",
+        "description": "Added ability to upload and attach images to conversations. AI can now analyze visual content alongside text discussions."
+      },
+      "securityUpdate": {
+        "title": "Security Enhancements",
+        "description": "Upgraded session management with improved cookie security and added CSRF protection for all API endpoints."
+      },
+      "i18nSupport": {
+        "title": "Multilingual Support",
+        "description": "Full internationalization with English and Korean language support. All UI components, dialogs, and error messages are now fully translated."
+      },
+      "stripeIntegration": {
+        "title": "Stripe Payment Integration",
+        "description": "Integrated Stripe for subscription management with Free, Pro, and Team plans. Includes customer portal for self-service subscription management."
+      },
+      "initialRelease": {
+        "title": "Initial Release",
+        "description": "Launched AI Chat Explorer with project-based conversation organization, RAG-powered semantic search, and Windows Explorer-style interface."
+      }
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "subtitle": "Learn how to get the most out of AI Chat Explorer with our comprehensive guides",
+    "help": {
+      "title": "Need more help?",
+      "description": "Can't find what you're looking for? Our support team is here to help.",
+      "contactSupport": "Contact Support"
+    },
+    "sections": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "description": "Learn the basics and start your first project",
+        "articles": {
+          "quickStart": {
+            "title": "Quick Start Guide",
+            "description": "Get up and running in 5 minutes"
+          },
+          "createProject": {
+            "title": "Creating Your First Project",
+            "description": "Organize conversations by topic"
+          },
+          "firstConversation": {
+            "title": "Starting Conversations",
+            "description": "Chat with AI and build context"
+          }
+        }
+      },
+      "conversations": {
+        "title": "Conversations",
+        "description": "Master AI interactions and customization",
+        "articles": {
+          "createManage": {
+            "title": "Managing Conversations",
+            "description": "Create, rename, and organize chats"
+          },
+          "aiInstructions": {
+            "title": "Custom AI Instructions",
+            "description": "Personalize AI behavior per conversation"
+          },
+          "fileAttachments": {
+            "title": "File Attachments",
+            "description": "Upload documents and images"
+          }
+        }
+      },
+      "search": {
+        "title": "Search & RAG",
+        "description": "Discover powerful search capabilities",
+        "articles": {
+          "semanticSearch": {
+            "title": "Semantic Search",
+            "description": "Find content by meaning, not keywords"
+          },
+          "ragSystem": {
+            "title": "RAG System Explained",
+            "description": "How AI remembers your conversations"
+          },
+          "crossProject": {
+            "title": "Cross-Project Context",
+            "description": "AI insights across all your work"
+          }
+        }
+      },
+      "settings": {
+        "title": "Settings & Preferences",
+        "description": "Customize your experience",
+        "articles": {
+          "projectManagement": {
+            "title": "Project Management",
+            "description": "Organize and manage projects"
+          },
+          "exportData": {
+            "title": "Exporting Data",
+            "description": "Download your conversations"
+          },
+          "darkMode": {
+            "title": "Dark Mode",
+            "description": "Switch between light and dark themes"
+          }
+        }
+      },
+      "billing": {
+        "title": "Billing & Plans",
+        "description": "Manage your subscription",
+        "articles": {
+          "plans": {
+            "title": "Available Plans",
+            "description": "Compare Free, Pro, and Team features"
+          },
+          "upgrade": {
+            "title": "Upgrading Your Plan",
+            "description": "Unlock more features instantly"
+          },
+          "manage": {
+            "title": "Managing Subscription",
+            "description": "Update payment and billing info"
+          }
+        }
+      },
+      "security": {
+        "title": "Security & Privacy",
+        "description": "Keep your data safe",
+        "articles": {
+          "dataPrivacy": {
+            "title": "Data Privacy",
+            "description": "How we protect your information"
+          },
+          "authentication": {
+            "title": "Authentication Options",
+            "description": "Secure login methods"
+          },
+          "encryption": {
+            "title": "Data Encryption",
+            "description": "Your data is encrypted at rest and in transit"
+          }
+        }
+      }
+    }
+  },
+  "about": {
+    "title": "About WiseQuery",
+    "subtitle": "We're building the AI assistant that truly remembers and understands your work",
+    "story": {
+      "title": "Our Story",
+      "paragraph1": "WiseQuery was founded with a simple yet powerful vision: to create an AI assistant that doesn't just respond to queries, but truly understands and remembers the context of your work.",
+      "paragraph2": "We noticed that despite the advances in AI technology, most tools still treated each conversation as isolated. Knowledge from past discussions was lost, and users found themselves repeatedly explaining context. We knew there had to be a better way.",
+      "paragraph3": "Today, WiseQuery's RAG-powered platform helps thousands of professionals organize their knowledge, maintain context across projects, and work more efficiently with AI that actually remembers."
+    },
+    "values": {
+      "title": "Our Values",
+      "mission": {
+        "title": "Mission-Driven",
+        "description": "We're committed to democratizing AI-powered knowledge management for everyone."
+      },
+      "innovation": {
+        "title": "Continuous Innovation",
+        "description": "We constantly push the boundaries of what's possible with AI and semantic search."
+      },
+      "userFirst": {
+        "title": "User First",
+        "description": "Every feature we build starts with understanding and solving real user problems."
+      },
+      "trust": {
+        "title": "Trust & Transparency",
+        "description": "We believe in being open about how we handle data and build our technology."
+      }
+    },
+    "cta": {
+      "title": "Join Us on Our Journey",
+      "description": "Experience the future of AI-powered knowledge management today.",
+      "getStarted": "Get Started Free",
+      "contactUs": "Contact Us"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights, tutorials, and updates from the WiseQuery team",
+    "readMore": "Read More",
+    "readTime": "{{minutes}} min read",
+    "moreComingSoon": "More articles coming soon. Stay tuned!",
+    "categories": {
+      "technology": "Technology",
+      "productivity": "Productivity",
+      "aiInsights": "AI Insights",
+      "teamwork": "Teamwork",
+      "security": "Security",
+      "tutorial": "Tutorial"
+    },
+    "posts": {
+      "ragExplained": {
+        "title": "Understanding RAG: How AI Remembers Your Conversations",
+        "excerpt": "Deep dive into Retrieval-Augmented Generation and how it powers WiseQuery's contextual memory."
+      },
+      "productivityTips": {
+        "title": "5 Tips to Maximize Your Productivity with AI Assistants",
+        "excerpt": "Learn how to structure your conversations and projects for maximum efficiency."
+      },
+      "aiKnowledge": {
+        "title": "Building Your Personal AI Knowledge Base",
+        "excerpt": "How to organize projects and conversations to create a searchable knowledge repository."
+      },
+      "teamCollaboration": {
+        "title": "Team Collaboration with Shared AI Context",
+        "excerpt": "Discover how teams can leverage shared knowledge bases for better collaboration."
+      },
+      "securityBestPractices": {
+        "title": "Security Best Practices for AI-Powered Tools",
+        "excerpt": "Understanding data privacy and security when working with AI assistants."
+      },
+      "gettingStarted": {
+        "title": "Getting Started with WiseQuery: A Complete Guide",
+        "excerpt": "Step-by-step tutorial to set up your first project and start chatting with context."
+      }
+    }
+  },
+  "careers": {
+    "title": "Join Our Team",
+    "subtitle": "Help us build the future of AI-powered knowledge management",
+    "openPositions": "Open Positions",
+    "applyNow": "Apply Now",
+    "benefits": {
+      "title": "Why Work at WiseQuery?",
+      "health": {
+        "title": "Health & Wellness",
+        "description": "Comprehensive health insurance and wellness programs"
+      },
+      "learning": {
+        "title": "Learning Budget",
+        "description": "Annual budget for courses, conferences, and books"
+      },
+      "team": {
+        "title": "Great Team",
+        "description": "Work with passionate, talented people from around the world"
+      },
+      "flexibility": {
+        "title": "Flexibility",
+        "description": "Remote-first culture with flexible working hours"
+      }
+    },
+    "departments": {
+      "engineering": "Engineering",
+      "ai": "AI/ML",
+      "design": "Design",
+      "product": "Product"
+    },
+    "locations": {
+      "remote": "Remote",
+      "hybrid": "Hybrid"
+    },
+    "types": {
+      "fullTime": "Full-time",
+      "partTime": "Part-time",
+      "contract": "Contract"
+    },
+    "positions": {
+      "seniorFrontend": {
+        "title": "Senior Frontend Engineer",
+        "description": "Build beautiful, performant user interfaces with React and TypeScript"
+      },
+      "backendEngineer": {
+        "title": "Backend Engineer",
+        "description": "Design and implement scalable APIs and data systems"
+      },
+      "mlEngineer": {
+        "title": "Machine Learning Engineer",
+        "description": "Develop and improve our RAG and embedding systems"
+      },
+      "productDesigner": {
+        "title": "Product Designer",
+        "description": "Create intuitive experiences for complex AI interactions"
+      }
+    },
+    "noFit": {
+      "title": "Don't See a Perfect Fit?",
+      "description": "We're always looking for talented people. Send us your resume and tell us how you'd like to contribute.",
+      "sendResume": "Send Your Resume"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "generalInquiry": "For general inquiries, email us at",
+    "options": {
+      "support": {
+        "title": "Support",
+        "description": "Get help with your account or technical issues"
+      },
+      "sales": {
+        "title": "Sales",
+        "description": "Learn about our plans and enterprise solutions"
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "Explore collaboration opportunities"
+      }
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "description": "Fill out the form below and we'll get back to you shortly.",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us more about your inquiry...",
+      "submit": "Send Message",
+      "success": {
+        "title": "Message Ready",
+        "description": "Your email client will open with the message. Click send to complete."
+      },
+      "validation": {
+        "nameMin": "Name must be at least 2 characters",
+        "emailInvalid": "Please enter a valid email address",
+        "subjectMin": "Subject must be at least 5 characters",
+        "messageMin": "Message must be at least 20 characters"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated",
+    "updateDate": "December 2024",
+    "intro": "At WiseQuery, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered knowledge management platform.",
+    "questions": "If you have any questions about this Privacy Policy, please contact us.",
+    "sections": {
+      "collection": {
+        "title": "Information We Collect",
+        "content": "We collect information you provide directly to us, including:\n\n• Account Information: When you create an account, we collect your name, email address, and password. If you sign up using OAuth providers (Google, Kakao, Naver), we receive your basic profile information from those services.\n\n• Content Data: We store the conversations, projects, and messages you create within our platform to provide our services.\n\n• Usage Information: We automatically collect information about how you interact with our services, including access times, pages viewed, and features used.\n\n• Device Information: We collect information about the device you use to access our services, including device type, operating system, and browser type."
+      },
+      "usage": {
+        "title": "How We Use Your Information",
+        "content": "We use the information we collect to:\n\n• Provide, maintain, and improve our services\n• Process transactions and send related information\n• Send technical notices, updates, and support messages\n• Respond to your comments, questions, and requests\n• Generate embeddings for semantic search functionality\n• Analyze usage patterns to improve user experience\n• Detect, investigate, and prevent fraudulent or unauthorized activities"
+      },
+      "storage": {
+        "title": "Data Storage and Retention",
+        "content": "Your data is stored on secure servers provided by our infrastructure partners. We retain your personal information for as long as your account is active or as needed to provide you services. You may request deletion of your account and associated data at any time by contacting us.\n\nConversation data and embeddings are stored to enable our RAG (Retrieval-Augmented Generation) features. When you delete a conversation, the associated embeddings are also removed."
+      },
+      "retention": {
+        "title": "Data Expiration & Retention Policies",
+        "content": "To maintain optimal service performance and manage storage efficiently, we implement tier-based data retention policies:\n\n• Free Plan: Conversations are retained for 30 days and files for 60 days from last activity.\n\n• Basic Plan: All data is retained for 180 days from last activity.\n\n• Pro Plan: All data is retained for 365 days (1 year) from last activity.\n\n• Custom/Enterprise Plan: Unlimited retention with no automatic expiration.\n\nBefore data expires, you will receive an email notification 7 days in advance. Expired data is first archived for a 14-day grace period, during which you can restore it. After the grace period, archived data is permanently deleted.\n\nYou can view and restore archived items in your account settings before permanent deletion. Upgrading your plan immediately extends your retention period."
+      },
+      "sharing": {
+        "title": "Information Sharing",
+        "content": "We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:\n\n• With your consent\n• To comply with legal obligations\n• To protect our rights, privacy, safety, or property\n• With service providers who assist in operating our platform (payment processors, hosting providers)\n• In connection with a merger, acquisition, or sale of assets"
+      },
+      "cookies": {
+        "title": "Cookies and Tracking Technologies",
+        "content": "We use cookies and similar tracking technologies to:\n\n• Maintain your session and preferences\n• Analyze traffic and usage patterns\n• Remember your language preferences\n• Provide a personalized experience\n\nYou can control cookies through your browser settings, but disabling them may affect the functionality of our services."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "content": "You have the right to:\n\n• Access and receive a copy of your personal data\n• Correct inaccurate or incomplete information\n• Request deletion of your personal data\n• Object to processing of your personal data\n• Withdraw consent at any time\n• Export your data in a portable format\n\nTo exercise these rights, please contact us at privacy@wisequery.app."
+      },
+      "children": {
+        "title": "Children's Privacy",
+        "content": "Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately."
+      },
+      "changes": {
+        "title": "Changes to This Policy",
+        "content": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date. We encourage you to review this Privacy Policy periodically for any changes."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy or our data practices, please contact us at:\n\nWiseQuery\nEmail: privacy@wisequery.app\nGeneral Inquiries: info@wisequery.app"
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated",
+    "updateDate": "December 2024",
+    "intro": "Welcome to WiseQuery. These Terms of Service (\"Terms\") govern your access to and use of WiseQuery's AI-powered knowledge management platform. By accessing or using our services, you agree to be bound by these Terms. If you do not agree to these Terms, do not use our services.",
+    "questions": "If you have any questions about these Terms, please contact us.",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "content": "By creating an account or using WiseQuery, you confirm that you are at least 18 years old (or the legal age of majority in your jurisdiction) and have the legal capacity to enter into these Terms. If you are using WiseQuery on behalf of an organization, you represent that you have the authority to bind that organization to these Terms."
+      },
+      "description": {
+        "title": "Description of Services",
+        "content": "WiseQuery provides an AI-powered knowledge management platform that allows users to:\n\n• Create and organize conversations within project hierarchies\n• Interact with AI assistants for information retrieval and analysis\n• Use semantic search powered by RAG (Retrieval-Augmented Generation) technology\n• Store and manage knowledge across multiple projects\n\nWe reserve the right to modify, suspend, or discontinue any part of our services at any time with reasonable notice."
+      },
+      "accounts": {
+        "title": "User Accounts",
+        "content": "You are responsible for:\n\n• Providing accurate and complete registration information\n• Maintaining the security of your account credentials\n• All activities that occur under your account\n• Notifying us immediately of any unauthorized access\n\nWe reserve the right to suspend or terminate accounts that violate these Terms or engage in fraudulent activities."
+      },
+      "usage": {
+        "title": "Acceptable Use",
+        "content": "You agree not to:\n\n• Use our services for any illegal purpose\n• Attempt to gain unauthorized access to our systems\n• Interfere with or disrupt our services or servers\n• Upload malicious code, viruses, or harmful content\n• Harass, abuse, or threaten other users\n• Use our services to generate spam or misleading content\n• Reverse engineer or decompile our software\n• Resell or redistribute our services without authorization\n• Violate any applicable laws or regulations"
+      },
+      "content": {
+        "title": "User Content",
+        "content": "You retain ownership of the content you create and upload to WiseQuery. By using our services, you grant us a limited license to:\n\n• Store, process, and display your content to provide our services\n• Create embeddings and indexes for search functionality\n• Use anonymized data to improve our AI models and services\n\nYou are solely responsible for the content you upload and must ensure it does not violate any laws or third-party rights."
+      },
+      "intellectual": {
+        "title": "Intellectual Property",
+        "content": "All rights, title, and interest in WiseQuery, including our software, design, logos, and content, are owned by WiseQuery and protected by intellectual property laws. You may not use our trademarks, logos, or brand elements without prior written consent.\n\nThe AI responses generated by our platform are provided for informational purposes only and should not be considered professional advice."
+      },
+      "payment": {
+        "title": "Payment Terms",
+        "content": "For paid subscription plans:\n\n• Subscription fees are billed in advance on a monthly basis\n• All payments are processed through Stripe, our secure payment provider\n• You authorize us to charge your payment method for recurring fees\n• Prices may change with 30 days notice\n• No refunds are provided for partial months of service\n• You may cancel your subscription at any time through your account settings"
+      },
+      "termination": {
+        "title": "Termination",
+        "content": "You may terminate your account at any time by contacting us or through your account settings. We may terminate or suspend your access to our services immediately, without prior notice, if:\n\n• You violate these Terms\n• Your account is used for fraudulent activities\n• We are required to do so by law\n• We discontinue the service\n\nUpon termination, your right to use our services will immediately cease, and we may delete your data after a reasonable retention period."
+      },
+      "disclaimer": {
+        "title": "Disclaimer of Warranties",
+        "content": "OUR SERVICES ARE PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT:\n\n• Our services will be uninterrupted or error-free\n• AI responses will be accurate, complete, or reliable\n• Our services will meet your specific requirements\n• Any defects will be corrected\n\nYou use our services at your own risk."
+      },
+      "limitation": {
+        "title": "Limitation of Liability",
+        "content": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, WISEQUERY SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:\n\n• Loss of profits, data, or business opportunities\n• Damages arising from reliance on AI-generated content\n• Service interruptions or data breaches\n\nOur total liability shall not exceed the amount you paid us in the twelve months preceding the claim."
+      },
+      "governing": {
+        "title": "Governing Law",
+        "content": "These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles. Any disputes arising from these Terms or our services shall be resolved through binding arbitration, except where prohibited by law."
+      },
+      "changes": {
+        "title": "Changes to Terms",
+        "content": "We reserve the right to modify these Terms at any time. We will notify you of material changes by posting the updated Terms on our website and updating the \"Last Updated\" date. Your continued use of our services after such changes constitutes acceptance of the new Terms."
+      }
+    }
+  },
+  "security": {
+    "title": "Security",
+    "subtitle": "Your data security is our top priority. Learn about the measures we take to protect your information.",
+    "intro": "At WiseQuery, we implement industry-leading security practices to protect your data and ensure the confidentiality, integrity, and availability of our services. Our security framework is designed to meet the highest standards expected of AI and cloud-based platforms.",
+    "featuresTitle": "Security Features",
+    "practicesTitle": "Security Practices",
+    "features": {
+      "encryption": {
+        "title": "Data Encryption",
+        "description": "All data is encrypted in transit using TLS 1.3 and at rest using AES-256 encryption."
+      },
+      "infrastructure": {
+        "title": "Secure Infrastructure",
+        "description": "Our services are hosted on enterprise-grade cloud infrastructure with SOC 2 compliance."
+      },
+      "access": {
+        "title": "Access Control",
+        "description": "Role-based access control and multi-factor authentication protect account access."
+      },
+      "monitoring": {
+        "title": "24/7 Monitoring",
+        "description": "Continuous security monitoring and automated threat detection systems."
+      },
+      "incident": {
+        "title": "Incident Response",
+        "description": "Dedicated security team with rapid incident response procedures."
+      },
+      "updates": {
+        "title": "Regular Updates",
+        "description": "Continuous security patches and vulnerability assessments."
+      }
+    },
+    "sections": {
+      "dataProtection": {
+        "title": "Data Protection",
+        "content": "We implement comprehensive data protection measures:\n\n• Encryption: All data is encrypted using industry-standard AES-256 encryption at rest and TLS 1.3 for data in transit.\n\n• Isolation: Each user's data is logically isolated to prevent unauthorized access between accounts.\n\n• Backups: Regular encrypted backups are maintained with secure offsite storage.\n\n• Data Minimization: We only collect and retain data necessary to provide our services."
+      },
+      "authentication": {
+        "title": "Authentication & Authorization",
+        "content": "We employ robust authentication mechanisms:\n\n• Secure Password Storage: Passwords are hashed using bcrypt with appropriate salt rounds.\n\n• OAuth Integration: Secure OAuth 2.0 integration with major providers (Google, Kakao, Naver).\n\n• Session Management: Secure session handling with automatic expiration and invalidation.\n\n• Access Controls: Fine-grained permissions ensure users can only access their own data."
+      },
+      "aiSecurity": {
+        "title": "AI & Data Processing Security",
+        "content": "Special considerations for AI-powered features:\n\n• Prompt Sanitization: Input validation and sanitization prevent injection attacks.\n\n• Embedding Isolation: Vector embeddings are stored with user-level access controls.\n\n• API Security: All OpenAI API communications use secure, authenticated connections.\n\n• Content Filtering: Automated systems detect and prevent misuse of AI features."
+      },
+      "compliance": {
+        "title": "Compliance & Standards",
+        "content": "We align with industry security standards and best practices:\n\n• OWASP Guidelines: Development follows OWASP security best practices.\n\n• Regular Audits: Periodic security assessments and code reviews.\n\n• Secure Development: Security-focused software development lifecycle.\n\n• Vendor Security: Third-party services are vetted for security compliance."
+      },
+      "vulnerability": {
+        "title": "Vulnerability Disclosure",
+        "content": "We welcome responsible disclosure of security vulnerabilities:\n\n• Please report security issues to security@wisequery.app\n\n• Include detailed steps to reproduce the vulnerability\n\n• Allow reasonable time for us to address the issue before public disclosure\n\n• Do not access or modify other users' data during research\n\nWe appreciate the security research community's help in keeping WiseQuery safe."
+      }
+    },
+    "report": {
+      "title": "Report a Vulnerability",
+      "description": "Found a security issue? We appreciate responsible disclosure.",
+      "button": "Report Security Issue"
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Autonomy for all. Choose the best plan for you.",
+    "popular": "Most Popular",
+    "current_plan_button": "Current Plan",
+    "per_month": "Per month",
+    "per_year": "Per year",
+    "per_month_label": "/month",
+    "per_month_billed_annually": "/month, billed annually",
+    "free": "Free",
+    "custom_pricing": "Custom pricing",
+    "save_yearly": "Save ${{amount}}/year",
+    "show_more": "Show 10 More",
+    "current_plan": {
+      "title": "Current Subscription",
+      "description": "Manage your plan and usage",
+      "your_plan": "Your Plan",
+      "active": "Active",
+      "inactive": "Inactive",
+      "projects": "Projects",
+      "ai_queries": "AI Queries",
+      "storage": "Storage",
+      "manage": "Manage your membership"
+    },
+    "plans": {
+      "free": {
+        "name": "Free",
+        "tagline": "Get started for free.",
+        "description": "Perfect for trying out WiseQuery.",
+        "features": {
+          "projects": "3 projects",
+          "conversations": "30 conversations",
+          "storage": "10GB storage",
+          "rag": "Basic RAG search",
+          "retention": "30-day conversation / 60-day file retention"
+        },
+        "cta": "Get Started"
+      },
+      "basic": {
+        "name": "Basic",
+        "tagline": "For individuals who need more.",
+        "description": "Great for personal use.",
+        "features": {
+          "projects": "10 projects",
+          "conversations": "Unlimited conversations",
+          "storage": "50GB storage",
+          "rag": "Basic RAG search",
+          "retention": "180-day data retention"
+        },
+        "cta": "Upgrade to Basic"
+      },
+      "pro": {
+        "name": "Pro",
+        "tagline": "For power users and teams.",
+        "description": "Everything you need for serious work.",
+        "features": {
+          "projects": "Unlimited projects",
+          "conversations": "Unlimited conversations",
+          "storage": "100GB storage",
+          "rag": "Advanced RAG with GPT-5",
+          "image_gen": "Nano Banana Pro image generation",
+          "priority_support": "Priority support",
+          "retention": "1-year data retention"
+        },
+        "cta": "Upgrade to Pro"
+      },
+      "custom": {
+        "name": "Custom",
+        "tagline": "Custom solutions for your organization.",
+        "description": "Tailored plans for enterprises.",
+        "features": {
+          "everything_pro": "Everything in Pro",
+          "custom_limits": "Custom limits",
+          "custom_integrations": "Custom integrations",
+          "dedicated_support": "Dedicated support",
+          "sla_guarantee": "SLA guarantee",
+          "retention": "Unlimited data retention"
+        },
+        "cta": "Contact Sales"
+      }
+    },
+    "comparison": {
+      "title": "Compare Plans",
+      "features": {
+        "projects": "Projects",
+        "conversations": "Conversations",
+        "storage": "Storage",
+        "data_retention": "Data Retention",
+        "rag_search": "RAG Search",
+        "image_generation": "Image Generation",
+        "support": "Support",
+        "api_access": "API Access"
+      },
+      "values": {
+        "free": {
+          "projects": "3",
+          "conversations": "30",
+          "storage": "10GB",
+          "data_retention": "30/60 days",
+          "rag_search": "Basic",
+          "image_generation": "No",
+          "support": "Community",
+          "api_access": "No"
+        },
+        "basic": {
+          "projects": "10",
+          "conversations": "Unlimited",
+          "storage": "50GB",
+          "data_retention": "180 days",
+          "rag_search": "Basic",
+          "image_generation": "No",
+          "support": "Email",
+          "api_access": "No"
+        },
+        "pro": {
+          "projects": "Unlimited",
+          "conversations": "Unlimited",
+          "storage": "100GB",
+          "data_retention": "1 year",
+          "rag_search": "Advanced",
+          "image_generation": "Yes",
+          "support": "Priority",
+          "api_access": "Yes"
+        },
+        "custom": {
+          "projects": "Custom",
+          "conversations": "Unlimited",
+          "storage": "Custom",
+          "data_retention": "Unlimited",
+          "rag_search": "Advanced",
+          "image_generation": "Yes",
+          "support": "Dedicated",
+          "api_access": "Yes"
+        }
+      }
+    },
+    "footer": {
+      "secure_payments": "Secure payments powered by Stripe",
+      "cancel_anytime": "Cancel anytime. No questions asked."
+    },
+    "error": {
+      "checkout_failed": "Checkout failed",
+      "portal_failed": "Failed to open customer portal",
+      "try_again": "Please try again later."
+    }
+  },
+  "officeFileDialog": {
+    "title": "Open Office File",
+    "description": "Choose how to open this document. You can download it to your computer or edit it online with Google.",
+    "fileName": "File",
+    "download": "Download",
+    "openWithGoogle": "Edit with Google"
+  },
+  "googleDrive": {
+    "editWithGoogle": "Edit with Google",
+    "editTitle": "Edit Document",
+    "sessionActive": "Edit session active",
+    "editInstructions": "Your document is open in {{editor}}. Make your changes and click 'Sync & Close' when done.",
+    "syncReminder": "Remember to click 'Sync & Close' to save your changes back to WiseQuery.",
+    "instructions": "Upload this document to {{editor}} for editing. Your changes will be synced back to WiseQuery.",
+    "step1": "Click 'Start Editing' to upload the file",
+    "step2": "Edit your document in {{editor}}",
+    "step3": "Click 'Sync & Close' to save changes",
+    "openEditor": "Open Editor",
+    "syncAndClose": "Sync & Close",
+    "startEditing": "Start Editing",
+    "uploadSuccess": "Document uploaded to Google Drive",
+    "uploadError": "Upload Failed",
+    "uploadErrorDesc": "Failed to upload document to Google Drive",
+    "syncSuccess": "Changes synced successfully",
+    "syncError": "Sync Failed",
+    "syncErrorDesc": "Failed to sync changes from Google Drive",
+    "cleanupSuccess": "Google Drive session ended",
+    "cleanupError": "Cleanup Failed",
+    "editorDocs": "Google Docs",
+    "editorSheets": "Google Sheets",
+    "editorSlides": "Google Slides",
+    "editorDrive": "Google Drive"
+  },
+  "help": {
+    "title": "Help",
+    "tabs": {
+      "guide": "Guide",
+      "shortcuts": "Shortcuts"
+    },
+    "shortcuts": {
+      "send": "Send message",
+      "newLine": "New line",
+      "edit": "Edit file",
+      "save": "Save changes",
+      "close": "Close dialog",
+      "delete": "Delete selected item",
+      "tagFile": "Tag file/conversation for AI (highest priority)",
+      "multiSelect": "Multi-select items",
+      "copy": "Copy",
+      "paste": "Paste",
+      "cut": "Cut"
+    },
+    "features": {
+      "projects": {
+        "title": "Project Management",
+        "description": "Organize conversations within projects. Create folders for better organization."
+      },
+      "chat": {
+        "title": "AI Chat",
+        "description": "Chat with AI assistant. Attach files for context-aware responses."
+      },
+      "search": {
+        "title": "Semantic Search",
+        "description": "Search across all conversations using natural language. Find relevant content quickly."
+      },
+      "files": {
+        "title": "File Management",
+        "description": "Upload, preview, and edit files. Supports documents, images, and more."
+      }
+    }
+  }
+}

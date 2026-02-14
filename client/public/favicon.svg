@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <style>
+      .folder-tree { 
+        stroke: #3b82f6;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g class="folder-tree">
+    <!-- Vertical line -->
+    <path d="M 16 8 L 16 56"/>
+    <!-- Top folder -->
+    <path d="M 16 16 L 24 16"/>
+    <rect x="24" y="12" width="28" height="16" rx="2"/>
+    <path d="M 28 12 L 32 8 L 40 8 L 44 12"/>
+    <!-- Bottom folder -->
+    <path d="M 16 40 L 24 40"/>
+    <rect x="24" y="36" width="28" height="16" rx="2"/>
+    <path d="M 28 36 L 32 32 L 40 32 L 44 36"/>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+TechCorp Frequently Asked Questions (FAQ)
+==========================================
+
+General Questions
+-----------------
+
+Q: What does TechCorp do?
+A: TechCorp is an AI solutions company that provides enterprise software for data analytics, automation, and business intelligence. Our main products include SmartWidget, DataFlow Pro, and AI Assistant Suite.
+
+Q: Where is TechCorp headquartered?
+A: Our headquarters is located at 123 Innovation Street, Gangnam-gu, Seoul, South Korea. We also have offices in Tokyo, San Francisco, and London.
+
+Q: How many employees does TechCorp have?
+A: As of 2024, TechCorp employs 847 people globally across our four office locations.
+
+Product Questions
+-----------------
+
+Q: What is the difference between SmartWidget and DataFlow Pro?
+A: SmartWidget focuses on AI-powered analytics and visualization, while DataFlow Pro is designed for ETL (Extract, Transform, Load) operations and data pipeline management. Many customers use both products together for a complete data solution.
+
+Q: Can I try SmartWidget before purchasing?
+A: Yes! We offer a 14-day free trial of SmartWidget with full functionality. No credit card required to start.
+
+Q: Does SmartWidget support Korean language?
+A: Yes, SmartWidget supports 15 languages including Korean, English, Japanese, Chinese, and major European languages.
+
+Q: What data formats does SmartWidget support?
+A: SmartWidget supports CSV, JSON, XML, Parquet, Avro, Excel files, and can connect directly to SQL databases, NoSQL databases, cloud storage (AWS S3, Azure Blob, Google Cloud Storage), and 200+ other data sources.
+
+Technical Questions
+-------------------
+
+Q: Is SmartWidget available as a cloud service?
+A: Yes, SmartWidget is available both as a cloud-hosted SaaS solution and as an on-premise installation for customers with specific security requirements.
+
+Q: What is SmartWidget's uptime guarantee?
+A: We guarantee 99.9% uptime for our cloud-hosted service, backed by our enterprise SLA.
+
+Q: How does SmartWidget handle data security?
+A: SmartWidget uses AES-256 encryption for data at rest and TLS 1.3 for data in transit. We are SOC 2 Type II certified and GDPR compliant.
+
+Q: Can SmartWidget integrate with my existing tools?
+A: Yes, SmartWidget offers native integrations with popular tools like Salesforce, SAP, Microsoft Power BI, Tableau, Slack, and Microsoft Teams. We also provide REST API and GraphQL for custom integrations.
+
+Billing Questions
+-----------------
+
+Q: What payment methods do you accept?
+A: We accept credit cards (Visa, Mastercard, American Express), bank transfers, and purchase orders for Enterprise customers.
+
+Q: Can I cancel my subscription anytime?
+A: Yes, you can cancel your subscription at any time. Your access will continue until the end of the current billing period.
+
+Q: Do you offer discounts for annual subscriptions?
+A: Yes, we offer a 20% discount for customers who pay annually instead of monthly.
+
+Support Questions
+-----------------
+
+Q: How can I contact TechCorp support?
+A: You can reach our support team via:
+- Email: support@techcorp.example.com
+- Phone: +82-2-1234-5678 (9 AM - 6 PM KST)
+- Live chat: Available on our website 24/7 for Enterprise customers
+
+Q: What is the average response time for support tickets?
+A: We respond to critical issues within 1 hour, high-priority issues within 4 hours, and standard issues within 24 hours.
+
+FAQ Document ID: TC-FAQ-2024-V3
+Last Updated: December 1, 2024
