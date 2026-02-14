@@ -71,7 +71,7 @@ export const projects = pgTable(
   ],
 );
 
-export const folders: ReturnType<typeof pgTable> = pgTable("folders", {
+export const folders = pgTable("folders", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   userId: varchar("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
   projectId: varchar("project_id").notNull().references(() => projects.id, { onDelete: "cascade" }),
@@ -357,6 +357,7 @@ export interface Folder {
   parentFolderId: string | null;
   name: string;
   order: number;
+  deletedAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
 }
