@@ -6,15 +6,9 @@ import { upload } from "../utils/uploadConfig";
 const router = Router();
 
 // Get current user
-router.get("/auth/user", isAuthenticated, async (req, res) => {
-    try {
-        const user = req.user as any;
-        const userId = user.id;
-        const userInfo = await storage.getUser(userId);
-        res.json(userInfo);
-    } catch (error) {
-        res.status(500).json({ error: "Failed to fetch user info" });
-    }
+// req.user is already the fresh user object fetched from DB by deserializeUser
+router.get("/auth/user", isAuthenticated, (req, res) => {
+    res.json(req.user);
 });
 
 // Update profile
@@ -75,7 +69,13 @@ router.get("/logout", (req, res) => {
             if (err) {
                 console.error("Session destroy error:", err);
             }
-            res.clearCookie("connect.sid");
+            // Cookie options must match those used at creation time for the browser
+            // to correctly remove the cookie (sameSite + secure must align).
+            res.clearCookie("connect.sid", {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "lax",
+            });
             res.redirect("/");
         });
     });

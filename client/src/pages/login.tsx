@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { useLocation } from "wouter";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -10,7 +9,6 @@ import { PrefetchLink } from "@/components/prefetch-link";
 
 export default function LoginPage() {
   const { t } = useTranslation();
-  const [location] = useLocation();
   const { toast } = useToast();
 
   useEffect(() => {
@@ -36,6 +34,27 @@ export default function LoginPage() {
         variant: "destructive",
         title: "로그인 불가",
         description: "Kakao 로그인 설정이 누락되었습니다.",
+      });
+      window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (error === "google_failed") {
+      toast({
+        variant: "destructive",
+        title: "Google 로그인 실패",
+        description: "Google 로그인 중 오류가 발생했습니다. 다시 시도해주세요.",
+      });
+      window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (error === "naver_failed") {
+      toast({
+        variant: "destructive",
+        title: "Naver 로그인 실패",
+        description: "네이버 로그인 중 오류가 발생했습니다. 다시 시도해주세요.",
+      });
+      window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (error === "kakao_failed") {
+      toast({
+        variant: "destructive",
+        title: "Kakao 로그인 실패",
+        description: "카카오 로그인 중 오류가 발생했습니다. 다시 시도해주세요.",
       });
       window.history.replaceState({}, document.title, window.location.pathname);
     }
