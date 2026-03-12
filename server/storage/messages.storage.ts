@@ -1,4 +1,4 @@
-import { BaseStorage, schema, eq, sql, and, isNull } from "./base";
+import { BaseStorage, schema, eq, sql, and, isNull, ilike, desc, lt, gt } from "./base";
 import type { Message, InsertMessage } from "@shared/schema";
 
 export class MessagesMixin extends BaseStorage {
@@ -62,6 +62,76 @@ export class MessagesMixin extends BaseStorage {
             .where(and(eq(schema.conversations.id, insertMessage.conversationId), eq(schema.conversations.userId, userId)));
 
         return results[0];
+    }
+
+    /**
+     * DB-level full-text search using ILIKE — replaces in-memory getAllMessages + filter pattern.
+     * Returns at most `limit` messages ordered by most recent first.
+     * Excludes messages from archived conversations.
+     */
+    async searchMessagesByText(userId: string, query: string, limit: number = 50): Promise<Message[]> {
+        return await this.db
+            .select({
+                id: schema.messages.id,
+                conversationId: schema.messages.conversationId,
+                userId: schema.messages.userId,
+                role: schema.messages.role,
+                content: schema.messages.content,
+                embedding: schema.messages.embedding,
+                embeddingVector: schema.messages.embeddingVector,
+                attachments: schema.messages.attachments,
+                createdAt: schema.messages.createdAt,
+            })
+            .from(schema.messages)
+            .innerJoin(schema.conversations, eq(schema.messages.conversationId, schema.conversations.id))
+            .where(and(
+                eq(schema.messages.userId, userId),
+                isNull(schema.conversations.archivedAt),
+                ilike(schema.messages.content, `%${query}%`),
+            ))
+            .orderBy(desc(schema.messages.createdAt))
+            .limit(limit);
+    }
+
+    /**
+     * Find the adjacent paired message for a given message.
+     * - assistant message → most recent user message before it (the prompt)
+     * - user message → first assistant message after it (the response)
+     * Used to display Q&A context pairs in search results without loading entire conversation.
+     */
+    async getPairedMessage(
+        conversationId: string,
+        userId: string,
+        role: string,
+        createdAt: Date,
+    ): Promise<Message | undefined> {
+        if (role === 'assistant') {
+            const [msg] = await this.db
+                .select()
+                .from(schema.messages)
+                .where(and(
+                    eq(schema.messages.conversationId, conversationId),
+                    eq(schema.messages.userId, userId),
+                    eq(schema.messages.role, 'user'),
+                    lt(schema.messages.createdAt, createdAt),
+                ))
+                .orderBy(desc(schema.messages.createdAt))
+                .limit(1);
+            return msg;
+        } else {
+            const [msg] = await this.db
+                .select()
+                .from(schema.messages)
+                .where(and(
+                    eq(schema.messages.conversationId, conversationId),
+                    eq(schema.messages.userId, userId),
+                    eq(schema.messages.role, 'assistant'),
+                    gt(schema.messages.createdAt, createdAt),
+                ))
+                .orderBy(schema.messages.createdAt)
+                .limit(1);
+            return msg;
+        }
     }
 
     async updateMessageEmbedding(id: string, userId: string, embedding: string, embeddingVector?: number[]): Promise<void> {

@@ -9,7 +9,6 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import { storage } from "./storage";
 import { chunkingQueue } from "./chunkingQueue";
-import { getPgVectorPool } from "./storage/base";
 
 const app = express();
 
@@ -139,22 +138,15 @@ app.use((req, res, next) => {
     console.error("[Startup] migrateEmbeddingsToVector failed (non-fatal):", (err as Error).message);
   }
 
-  // 재시작 시 'processing' 상태로 멈춘 파일들을 'pending'으로 리셋하고 청킹 큐에 재추가
+  // 재시작 시 'pending' 및 'processing' 상태 파일을 복구하여 청킹 큐에 재추가
+  // ('processing' 파일은 자동으로 'pending'으로 리셋 후 재큐잉)
   try {
-    const pool = getPgVectorPool();
-    const result = await pool.query<{ id: string; user_id: string }>(
-      `UPDATE files SET chunking_status = 'pending'
-       WHERE chunking_status = 'processing'
-       RETURNING id, user_id`
-    );
-    if (result.rowCount && result.rowCount > 0) {
-      log(`[Startup] Reset ${result.rowCount} stuck 'processing' files to 'pending'`);
-      for (const row of result.rows) {
-        chunkingQueue.addJob(row.id, row.user_id);
-      }
+    const recovered = await chunkingQueue.recoverJobs();
+    if (recovered > 0) {
+      log(`[Startup] Recovered ${recovered} pending/interrupted chunking jobs`);
     }
   } catch (err) {
-    console.error("[Startup] Failed to reset stuck processing files:", err);
+    console.error("[Startup] Failed to recover chunking jobs:", err);
   }
 
   const server = await registerRoutes(app);

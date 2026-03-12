@@ -44,4 +44,4 @@ export class BaseStorage {
 
 // Re-export schema and drizzle utilities for use in mixin files
 export { schema };
-export { eq, desc, sql, max, and, lt, isNull, isNotNull, or } from "drizzle-orm";
+export { eq, desc, sql, max, and, lt, gt, isNull, isNotNull, or, ilike } from "drizzle-orm";

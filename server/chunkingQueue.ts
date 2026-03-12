@@ -324,6 +324,27 @@ class ChunkingQueue {
   getJobsForUser(userId: string): ChunkingJob[] {
     return this.queue.filter(j => j.userId === userId);
   }
+
+  /**
+   * On server startup, re-queues any files left in 'pending' or 'processing' state.
+   * 'processing' files are first reset to 'pending' since their previous run was interrupted.
+   * This replaces the raw SQL recovery block in index.ts and also handles 'pending' files
+   * that were queued in memory but lost on restart.
+   */
+  async recoverJobs(): Promise<number> {
+    const filesToRecover = await storage.getFilesForChunkingRecovery();
+    if (filesToRecover.length === 0) return 0;
+
+    for (const file of filesToRecover) {
+      if (file.chunkingStatus === 'processing') {
+        await storage.updateFileChunkingStatus(file.id, file.userId, 'pending');
+      }
+      this.addJob(file.id, file.userId);
+    }
+
+    console.log(`[ChunkingQueue] Recovered ${filesToRecover.length} pending/interrupted chunking jobs on startup`);
+    return filesToRecover.length;
+  }
 }
 
 export const chunkingQueue = new ChunkingQueue();

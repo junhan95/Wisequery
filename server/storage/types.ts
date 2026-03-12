@@ -56,6 +56,8 @@ export interface IStorage {
 
     getMessages(conversationId: string, userId: string): Promise<Message[]>;
     getAllMessages(userId: string, includeArchived?: boolean): Promise<Message[]>;
+    searchMessagesByText(userId: string, query: string, limit?: number): Promise<Message[]>;
+    getPairedMessage(conversationId: string, userId: string, role: string, createdAt: Date): Promise<Message | undefined>;
     getAIQueryCount(userId: string): Promise<number>;
     createMessage(message: InsertMessage, userId: string): Promise<Message>;
     updateMessageEmbedding(id: string, userId: string, embedding: string, embeddingVector?: number[]): Promise<void>;
@@ -69,6 +71,7 @@ export interface IStorage {
     deleteFile(id: string, userId: string): Promise<boolean>;
     updateFileEmbedding(id: string, userId: string, embedding: string, embeddingVector?: number[]): Promise<void>;
     updateFileContent(id: string, userId: string, content: string, size: number): Promise<void>;
+    getFilesForChunkingRecovery(): Promise<Array<{ id: string; userId: string; chunkingStatus: string | null }>>;
 
     // Subscription operations
     getSubscription(userId: string): Promise<Subscription | undefined>;

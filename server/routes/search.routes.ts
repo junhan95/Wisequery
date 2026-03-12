@@ -2,7 +2,7 @@ import { Router } from "express";
 import { isAuthenticated } from "../sessionAuth";
 import { storage } from "../storage";
 import { generateEmbedding } from "../openai";
-import { type SearchResult, type Message } from "@shared/schema";
+import { type SearchResult } from "@shared/schema";
 import { filterChunksByAttributes, validateFilter, type AttributeFilter } from "../filterParser";
 import multer from "multer";
 import path from "path";
@@ -119,20 +119,6 @@ router.post("/search", isAuthenticated, async (req, res) => {
             attributeFilter = filter as AttributeFilter;
         }
 
-        const allMessages = await storage.getAllMessages(userId);
-
-        const messagesByConversation = new Map<string, Message[]>();
-        for (const msg of allMessages) {
-            if (!messagesByConversation.has(msg.conversationId)) {
-                messagesByConversation.set(msg.conversationId, []);
-            }
-            messagesByConversation.get(msg.conversationId)!.push(msg);
-        }
-
-        for (const msgs of Array.from(messagesByConversation.values())) {
-            msgs.sort((a: Message, b: Message) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
-        }
-
         const exactResults: SearchResult[] = [];
         const semanticResults: SearchResult[] = [];
         const addedMessageIds = new Set<string>();
@@ -155,8 +141,11 @@ router.post("/search", isAuthenticated, async (req, res) => {
             return projectCache.get(projectId);
         };
 
+        // Builds a SearchResult for a matched message.
+        // Paired message (Q&A counterpart) is fetched via targeted DB query instead of
+        // scanning the full in-memory conversation map.
         const createSearchResult = async (
-            msg: Message,
+            msg: { id: string; conversationId: string; userId: string; role: string; content: string; createdAt: Date; similarity?: number },
             matchType: 'exact' | 'semantic',
             similarity: number
         ): Promise<SearchResult | null> => {
@@ -166,35 +155,14 @@ router.post("/search", isAuthenticated, async (req, res) => {
             const project = await getProjectCached(conversation.projectId);
             if (!project) return null;
 
-            let pairedMessage: { role: string; content: string; createdAt: string } | undefined;
-            const conversationMessages = messagesByConversation.get(msg.conversationId) || [];
-            const currentIndex = conversationMessages.findIndex(m => m.id === msg.id);
-
-            if (currentIndex !== -1) {
-                if (msg.role === "assistant" && currentIndex > 0) {
-                    for (let i = currentIndex - 1; i >= 0; i--) {
-                        if (conversationMessages[i].role === "user") {
-                            pairedMessage = {
-                                role: conversationMessages[i].role,
-                                content: conversationMessages[i].content,
-                                createdAt: new Date(conversationMessages[i].createdAt).toISOString(),
-                            };
-                            break;
-                        }
-                    }
-                } else if (msg.role === "user" && currentIndex < conversationMessages.length - 1) {
-                    for (let i = currentIndex + 1; i < conversationMessages.length; i++) {
-                        if (conversationMessages[i].role === "assistant") {
-                            pairedMessage = {
-                                role: conversationMessages[i].role,
-                                content: conversationMessages[i].content,
-                                createdAt: new Date(conversationMessages[i].createdAt).toISOString(),
-                            };
-                            break;
-                        }
-                    }
-                }
-            }
+            const paired = await storage.getPairedMessage(
+                msg.conversationId, userId, msg.role, new Date(msg.createdAt)
+            );
+            const pairedMessage = paired ? {
+                role: paired.role,
+                content: paired.content,
+                createdAt: new Date(paired.createdAt).toISOString(),
+            } : undefined;
 
             return {
                 messageId: msg.id,
@@ -210,21 +178,23 @@ router.post("/search", isAuthenticated, async (req, res) => {
             };
         };
 
-        // Exact text matches
-        const queryLower = query.toLowerCase();
-        for (const msg of allMessages) {
+        // Kick off exact-text search (DB ILIKE) and embedding generation in parallel
+        const [exactMessages, queryEmbedding] = await Promise.all([
+            storage.searchMessagesByText(userId, query, 50),
+            generateEmbedding(query),
+        ]);
+
+        // Exact text matches — DB-level ILIKE replaces full in-memory scan
+        for (const msg of exactMessages) {
             if (addedMessageIds.has(msg.id)) continue;
-            if (msg.content.toLowerCase().includes(queryLower)) {
-                const result = await createSearchResult(msg, 'exact', 1.0);
-                if (result) {
-                    exactResults.push(result);
-                    addedMessageIds.add(msg.id);
-                }
+            const result = await createSearchResult(msg, 'exact', 1.0);
+            if (result) {
+                exactResults.push(result);
+                addedMessageIds.add(msg.id);
             }
         }
 
         // Semantic matches via pgvector
-        const queryEmbedding = await generateEmbedding(query);
         const vectorMessages = await storage.searchMessagesByVector(userId, queryEmbedding, 20);
         for (const msg of vectorMessages) {
             if (addedMessageIds.has(msg.id) || msg.similarity < 0.6) continue;

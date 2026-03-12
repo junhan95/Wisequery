@@ -1,4 +1,4 @@
-import { BaseStorage, schema, eq, desc, and, isNull } from "./base";
+import { BaseStorage, schema, eq, desc, and, isNull, or } from "./base";
 import type { File, InsertFile } from "@shared/schema";
 
 export class FilesMixin extends BaseStorage {
@@ -68,6 +68,27 @@ export class FilesMixin extends BaseStorage {
             .update(schema.files)
             .set(updateData)
             .where(and(eq(schema.files.id, id), eq(schema.files.userId, userId)));
+    }
+
+    /**
+     * Returns files with chunking_status 'pending' or 'processing' that have not been deleted.
+     * Used by ChunkingQueue.recoverJobs() on server startup to re-queue interrupted work.
+     */
+    async getFilesForChunkingRecovery(): Promise<Array<{ id: string; userId: string; chunkingStatus: string | null }>> {
+        return await this.db
+            .select({
+                id: schema.files.id,
+                userId: schema.files.userId,
+                chunkingStatus: schema.files.chunkingStatus,
+            })
+            .from(schema.files)
+            .where(and(
+                or(
+                    eq(schema.files.chunkingStatus, 'pending'),
+                    eq(schema.files.chunkingStatus, 'processing'),
+                ),
+                isNull(schema.files.deletedAt),
+            ));
     }
 
     async updateFileContent(id: string, userId: string, content: string, size: number): Promise<void> {
