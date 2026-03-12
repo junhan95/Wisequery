@@ -321,19 +321,17 @@ FORMAT INSTRUCTIONS:
       sessionParser(req as any, {} as any, () => {
         const session = (req as any).session;
 
-        // Read user from session (passport stores it in session.passport.user)
-        const user = session?.passport?.user;
+        // passport.serializeUser stores only the user ID (string) in the session
+        const userId = session?.passport?.user as string | undefined;
 
-        // Check if user exists
-        const userId = user?.id;
-        if (!user || !userId) {
+        if (!userId) {
           socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
           socket.destroy();
           return;
         }
 
         // Set req.user for the connection handler
-        (req as any).user = user;
+        (req as any).user = { id: userId };
 
         wss.handleUpgrade(req, socket, head, (ws) => {
           wss.emit("connection", ws, req);

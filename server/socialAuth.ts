@@ -35,8 +35,7 @@ async function findOrCreateUser(profile: OAuthProfile) {
         if (profile.firstName) updateData.firstName = profile.firstName;
         if (profile.lastName) updateData.lastName = profile.lastName;
 
-        await storage.updateUser(user.id, updateData);
-        return await storage.getUser(user.id);
+        return await storage.updateUser(user.id, updateData);
     }
 
     // Create new user

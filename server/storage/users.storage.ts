@@ -21,21 +21,6 @@ export class UsersMixin extends BaseStorage {
         return user;
     }
 
-    async upsertUser(userData: UpsertUser): Promise<User> {
-        const [user] = await this.db
-            .insert(schema.users)
-            .values(userData)
-            .onConflictDoUpdate({
-                target: schema.users.id,
-                set: {
-                    ...userData,
-                    updatedAt: new Date(),
-                },
-            })
-            .returning();
-        return user;
-    }
-
     async updateUser(id: string, data: Partial<User>): Promise<User | undefined> {
         const results = await this.db
             .update(schema.users)

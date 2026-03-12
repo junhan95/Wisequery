@@ -30,7 +30,6 @@ export interface IStorage {
     getUser(id: string): Promise<User | undefined>;
     getUserByEmail(email: string): Promise<User | undefined>;
     createUser(user: UpsertUser): Promise<User>;
-    upsertUser(user: UpsertUser): Promise<User>;
     updateUser(id: string, data: Partial<User>): Promise<User | undefined>;
 
     getProjects(userId: string): Promise<Project[]>;

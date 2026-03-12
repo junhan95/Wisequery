@@ -82,26 +82,6 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async upsertUser(userData: UpsertUser): Promise<User> {
-    const now = new Date();
-    const user: User = {
-      id: userData.id!,
-      email: userData.email ?? null,
-      firstName: userData.firstName ?? null,
-      lastName: userData.lastName ?? null,
-      profileImageUrl: userData.profileImageUrl ?? null,
-      department: userData.department ?? null,
-      jobTitle: userData.jobTitle ?? null,
-      phone: userData.phone ?? null,
-      authProvider: userData.authProvider ?? "oauth",
-      role: userData.role ?? "user",
-      createdAt: this.users.get(userData.id!)?.createdAt ?? now,
-      updatedAt: now,
-    };
-    this.users.set(user.id, user);
-    return user;
-  }
-
   async updateUser(id: string, data: Partial<User>): Promise<User | undefined> {
     const user = this.users.get(id);
     if (!user) return undefined;
