@@ -152,6 +152,10 @@ export const files = pgTable(
     index("IDX_files_user_id").on(table.userId),
     index("IDX_files_project_id").on(table.projectId),
     index("IDX_files_user_project").on(table.userId, table.projectId),
+    // Covers getFilesByConversation (most frequent file lookup by chat context)
+    index("IDX_files_user_conversation").on(table.userId, table.conversationId),
+    // Covers soft-delete filtering on project queries
+    index("IDX_files_project_deleted").on(table.projectId, table.deletedAt),
   ],
 );
 
@@ -187,6 +191,8 @@ export const fileChunks = pgTable(
     index("IDX_file_chunks_user_id").on(table.userId),
     index("IDX_file_chunks_file_id").on(table.fileId),
     index("IDX_file_chunks_user_file").on(table.userId, table.fileId),
+    // Covers ordered chunk retrieval within a file (getFileChunks uses chunkIndex ORDER BY)
+    index("IDX_file_chunks_file_chunk_order").on(table.fileId, table.chunkIndex),
   ],
 );
 

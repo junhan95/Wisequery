@@ -38,19 +38,29 @@ export class FileChunksMixin extends BaseStorage {
     }
 
     async getFileChunksByProject(projectId: string, userId: string): Promise<FileChunk[]> {
-        // This method depends on getFilesByProject — handled in composed class
-        const projectFiles = await this.db
-            .select()
-            .from(schema.files)
-            .where(and(eq(schema.files.projectId, projectId), eq(schema.files.userId, userId), isNull(schema.files.deletedAt)));
-        if (projectFiles.length === 0) return [];
-
-        const allChunks: FileChunk[] = [];
-        for (const file of projectFiles) {
-            const chunks = await this.getFileChunks(file.id, userId);
-            allChunks.push(...chunks);
-        }
-        return allChunks;
+        // Single JOIN query replaces N+1 pattern (fetch all files then N chunk queries)
+        return await this.db
+            .select({
+                id: schema.fileChunks.id,
+                fileId: schema.fileChunks.fileId,
+                userId: schema.fileChunks.userId,
+                chunkIndex: schema.fileChunks.chunkIndex,
+                content: schema.fileChunks.content,
+                tokenCount: schema.fileChunks.tokenCount,
+                embedding: schema.fileChunks.embedding,
+                embeddingVector: schema.fileChunks.embeddingVector,
+                metadata: schema.fileChunks.metadata,
+                attributes: schema.fileChunks.attributes,
+                createdAt: schema.fileChunks.createdAt,
+            })
+            .from(schema.fileChunks)
+            .innerJoin(schema.files, eq(schema.fileChunks.fileId, schema.files.id))
+            .where(and(
+                eq(schema.files.projectId, projectId),
+                eq(schema.fileChunks.userId, userId),
+                isNull(schema.files.deletedAt),
+            ))
+            .orderBy(schema.fileChunks.chunkIndex);
     }
 
     async getAllFileChunks(userId: string, includeArchived = false): Promise<FileChunk[]> {

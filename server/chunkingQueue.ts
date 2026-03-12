@@ -34,6 +34,29 @@ export interface ChunkingEvent {
   };
 }
 
+/**
+ * Generates an embedding with exponential backoff retry.
+ * Retries up to maxRetries times with delays of 1s, 2s, 4s on failure.
+ * Returns null after all attempts fail (chunk is stored without embedding).
+ */
+async function generateEmbeddingWithRetry(text: string, maxRetries = 3): Promise<number[] | null> {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await generateEmbedding(text);
+    } catch (error) {
+      const isLastAttempt = attempt === maxRetries - 1;
+      if (isLastAttempt) {
+        console.error(`[ChunkingQueue] Embedding failed after ${maxRetries} attempts:`, error);
+        return null;
+      }
+      const delayMs = Math.pow(2, attempt) * 1000; // 1s, 2s, 4s
+      console.warn(`[ChunkingQueue] Embedding attempt ${attempt + 1} failed, retrying in ${delayMs}ms...`);
+      await new Promise(r => setTimeout(r, delayMs));
+    }
+  }
+  return null;
+}
+
 class ChunkingQueue {
   private queue: ChunkingJob[] = [];
   private processing = false;
@@ -143,8 +166,8 @@ class ChunkingQueue {
       for (let i = 0; i < chunks.length; i += BATCH_SIZE) {
         const batch = chunks.slice(i, i + BATCH_SIZE);
         
-        const embeddingPromises = batch.map(chunk => 
-          generateEmbedding(chunk.content).catch(() => null)
+        const embeddingPromises = batch.map(chunk =>
+          generateEmbeddingWithRetry(chunk.content)
         );
         const embeddings = await Promise.all(embeddingPromises);
         
