@@ -61,11 +61,17 @@ export function useAuth() {
     }
   }, [user, isFetched]);
 
-  const isLoading = cachedAuth === null ? isQueryLoading : false;
+  // Only trust the cache when it says the user IS authenticated.
+  // A cached "false" state can be stale — e.g., after an OAuth login that redirected
+  // back to "/", sessionStorage still holds the pre-login false value.
+  // Trusting stale "false" causes an immediate render of the landing page (blank flash)
+  // before the fresh /api/auth/user response arrives with the actual logged-in user.
+  const isTrustedCache = cachedAuth?.isAuthenticated === true;
+  const isLoading = isTrustedCache ? false : isQueryLoading;
 
   return {
     user,
     isLoading,
-    isAuthenticated: isFetched ? !!user : (cachedAuth?.isAuthenticated ?? false),
+    isAuthenticated: isFetched ? !!user : (isTrustedCache ? true : false),
   };
 }

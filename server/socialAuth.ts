@@ -71,6 +71,10 @@ export function setupSocialAuth(app: Express) {
                     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
                     callbackURL: `${callbackBaseUrl}/api/auth/google/callback`,
                     scope: ["profile", "email"],
+                    // Required when running behind a reverse proxy (e.g., Render).
+                    // Ensures Passport uses X-Forwarded-Proto (https) when reconstructing
+                    // the callback URL — prevents http/https mismatch during state validation.
+                    proxy: true,
                 },
                 async (_accessToken, _refreshToken, profile, done) => {
                     try {
@@ -123,6 +127,8 @@ export function setupSocialAuth(app: Express) {
                     clientID: process.env.NAVER_CLIENT_ID,
                     clientSecret: process.env.NAVER_CLIENT_SECRET,
                     callbackURL: `${callbackBaseUrl}/api/auth/naver/callback`,
+                    // proxy: true is not available in passport-naver-v2 typings but
+                    // the absolute callbackURL above handles proxy environments correctly.
                 },
                 async (_accessToken: string, _refreshToken: string, profile: any, done: any) => {
                     try {
