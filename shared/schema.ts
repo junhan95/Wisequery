@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, integer, jsonb, index, customType } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, integer, jsonb, index, customType, boolean, unique } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -48,11 +48,37 @@ export const users = pgTable("users", {
   profileImageUrl: varchar("profile_image_url"),
   department: varchar("department"),
   jobTitle: varchar("job_title"),
-  phone: varchar("phone"),
+  phone: varchar("phone").unique(),
+  phoneVerified: boolean("phone_verified").default(false),
   authProvider: varchar("auth_provider").default("oauth"),
   role: varchar("role").default("user"), // "user" | "admin"
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Social accounts table: allows one user to link multiple OAuth providers
+export const socialAccounts = pgTable(
+  "social_accounts",
+  {
+    id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+    userId: varchar("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    provider: varchar("provider").notNull(), // "google" | "naver" | "kakao"
+    providerEmail: varchar("provider_email").notNull(),
+    createdAt: timestamp("created_at").defaultNow(),
+  },
+  (table) => [
+    unique("uq_social_accounts_provider_email").on(table.provider, table.providerEmail),
+    index("IDX_social_accounts_user_id").on(table.userId),
+  ]
+);
+
+// Phone verification OTP table
+export const phoneVerifications = pgTable("phone_verifications", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  phone: varchar("phone").notNull(),
+  code: varchar("code", { length: 6 }).notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const projects = pgTable(
@@ -387,6 +413,12 @@ export const insertGoogleDriveTempFileSchema = createInsertSchema(googleDriveTem
 
 export type InsertGoogleDriveTempFile = z.infer<typeof insertGoogleDriveTempFileSchema>;
 export type GoogleDriveTempFile = typeof googleDriveTempFiles.$inferSelect;
+
+export type SocialAccount = typeof socialAccounts.$inferSelect;
+export type InsertSocialAccount = typeof socialAccounts.$inferInsert;
+
+export type PhoneVerification = typeof phoneVerifications.$inferSelect;
+export type InsertPhoneVerification = typeof phoneVerifications.$inferInsert;
 
 export interface ChatRequest {
   conversationId: string;

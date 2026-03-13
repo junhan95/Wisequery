@@ -19,39 +19,54 @@ interface OAuthProfile {
 }
 
 /**
- * Find or create a user from OAuth profile data
+ * Find or create a user from OAuth profile data.
+ * Returns { user, isNewUser } so callers can decide whether phone verification is needed.
  */
-async function findOrCreateUser(profile: OAuthProfile) {
-    // Check if user exists by email
-    let user = await storage.getUserByEmail(profile.email);
+async function findOrCreateUser(profile: OAuthProfile): Promise<{ user: NonNullable<Awaited<ReturnType<typeof storage.getUser>>>; isNewUser: boolean }> {
+    // 1. social_accounts 테이블에서 (provider + email)로 기존 연결 확인
+    const socialAccount = await storage.getSocialAccountByProviderEmail(profile.provider, profile.email);
+    if (socialAccount) {
+        const user = await storage.getUser(socialAccount.userId);
+        if (user) {
+            // 프로필 이미지 업데이트
+            await storage.updateUser(user.id, {
+                profileImageUrl: profile.profileImageUrl || user.profileImageUrl,
+            });
+            return { user: (await storage.getUser(user.id))!, isNewUser: false };
+        }
+    }
 
+    // 2. 이메일로 기존 사용자 확인
+    let user = await storage.getUserByEmail(profile.email);
     if (user) {
-        // Update auth provider and profile (including names) if needed
         const updateData: Record<string, any> = {
             authProvider: profile.provider,
             profileImageUrl: profile.profileImageUrl || user.profileImageUrl,
         };
-
         if (profile.firstName) updateData.firstName = profile.firstName;
         if (profile.lastName) updateData.lastName = profile.lastName;
 
         await storage.updateUser(user.id, updateData);
-        return await storage.getUser(user.id);
+
+        // social_accounts에 현재 provider 등록 (없으면 추가)
+        await storage.createSocialAccount(user.id, profile.provider, profile.email);
+
+        return { user: (await storage.getUser(user.id))!, isNewUser: false };
     }
 
-    // Create new user
+    // 3. 신규 사용자 생성 (phone_verified = false)
     user = await storage.createUser({
         email: profile.email,
         firstName: profile.firstName || null,
         lastName: profile.lastName || null,
         profileImageUrl: profile.profileImageUrl || null,
         authProvider: profile.provider,
+        phoneVerified: false,
     });
 
-    // Create free plan subscription for new users
     await storage.createSubscription({ plan: "free" }, user.id);
 
-    return user;
+    return { user, isNewUser: true };
 }
 
 /**
@@ -79,7 +94,7 @@ export function setupSocialAuth(app: Express) {
                             return done(new Error("No email found in Google profile"));
                         }
 
-                        const user = await findOrCreateUser({
+                        const { user } = await findOrCreateUser({
                             provider: "google",
                             email,
                             firstName: profile.name?.givenName || undefined,
@@ -100,7 +115,9 @@ export function setupSocialAuth(app: Express) {
         app.get(
             "/api/auth/google/callback",
             passport.authenticate("google", { failureRedirect: "/login?error=google_failed" }),
-            (_req, res) => {
+            (req, res) => {
+                const user = req.user as any;
+                if (!user?.phoneVerified) return res.redirect("/verify-phone");
                 res.redirect("/");
             }
         );
@@ -131,7 +148,7 @@ export function setupSocialAuth(app: Express) {
                             return done(new Error("No email found in Naver profile"));
                         }
 
-                        const user = await findOrCreateUser({
+                        const { user } = await findOrCreateUser({
                             provider: "naver",
                             email,
                             firstName: profile.name || profile._json?.name || undefined,
@@ -152,7 +169,9 @@ export function setupSocialAuth(app: Express) {
         app.get(
             "/api/auth/naver/callback",
             passport.authenticate("naver", { failureRedirect: "/login?error=naver_failed" }),
-            (_req, res) => {
+            (req, res) => {
+                const user = req.user as any;
+                if (!user?.phoneVerified) return res.redirect("/verify-phone");
                 res.redirect("/");
             }
         );
@@ -188,7 +207,7 @@ export function setupSocialAuth(app: Express) {
                             profile._json?.kakao_account?.profile?.profile_image_url ||
                             null;
 
-                        const user = await findOrCreateUser({
+                        const { user } = await findOrCreateUser({
                             provider: "kakao",
                             email,
                             firstName: nickname || undefined,
@@ -209,7 +228,9 @@ export function setupSocialAuth(app: Express) {
         app.get(
             "/api/auth/kakao/callback",
             passport.authenticate("kakao", { failureRedirect: "/login?error=kakao_failed" }),
-            (_req, res) => {
+            (req, res) => {
+                const user = req.user as any;
+                if (!user?.phoneVerified) return res.redirect("/verify-phone");
                 res.redirect("/");
             }
         );

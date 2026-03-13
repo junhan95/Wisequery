@@ -23,15 +23,30 @@ import type {
     InsertAuditEvent,
     GoogleDriveTempFile,
     InsertGoogleDriveTempFile,
+    SocialAccount,
+    PhoneVerification,
 } from "@shared/schema";
 
 export interface IStorage {
     // User operations
     getUser(id: string): Promise<User | undefined>;
     getUserByEmail(email: string): Promise<User | undefined>;
+    getUserByPhone(phone: string): Promise<User | undefined>;
     createUser(user: UpsertUser): Promise<User>;
     upsertUser(user: UpsertUser): Promise<User>;
     updateUser(id: string, data: Partial<User>): Promise<User | undefined>;
+    deleteUser(id: string): Promise<boolean>;
+
+    // Social account operations
+    getSocialAccountByProviderEmail(provider: string, providerEmail: string): Promise<SocialAccount | undefined>;
+    getSocialAccountsByUserId(userId: string): Promise<SocialAccount[]>;
+    createSocialAccount(userId: string, provider: string, providerEmail: string): Promise<SocialAccount>;
+    reassignSocialAccounts(fromUserId: string, toUserId: string): Promise<void>;
+
+    // Phone verification operations
+    createPhoneVerification(phone: string, code: string, expiresAt: Date): Promise<PhoneVerification>;
+    getPhoneVerification(phone: string): Promise<PhoneVerification | undefined>;
+    deletePhoneVerification(phone: string): Promise<void>;
 
     getProjects(userId: string): Promise<Project[]>;
     getProject(id: string, userId: string): Promise<Project | undefined>;

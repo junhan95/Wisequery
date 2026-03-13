@@ -24,6 +24,7 @@ const Privacy = lazy(() => import("@/pages/privacy"));
 const Terms = lazy(() => import("@/pages/terms"));
 const Security = lazy(() => import("@/pages/security"));
 const Login = lazy(() => import("@/pages/login"));
+const VerifyPhone = lazy(() => import("@/pages/verify-phone"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -71,6 +72,7 @@ function Router() {
         <Route path="/terms" component={Terms} />
         <Route path="/security" component={Security} />
         <Route path="/login" component={Login} />
+        <Route path="/verify-phone" component={VerifyPhone} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
