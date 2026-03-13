@@ -12,7 +12,9 @@ export function getPgVectorPool(): Pool {
             max: 10,  // Maximum 10 connections in pool
             idleTimeoutMillis: 30000,  // Close idle connections after 30 seconds
             connectionTimeoutMillis: 10000,  // Timeout after 10 seconds when acquiring connection
-            ssl: { rejectUnauthorized: false }
+            ssl: process.env.NODE_ENV === "production"
+                ? true
+                : { rejectUnauthorized: false },
         });
 
         // Handle pool errors gracefully
